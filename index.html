@@ -1,45 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TH3CHAIN | Decentralized Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>TH3 CHAIN | The Future of Proof-of-Work</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="cursor-glow"></div>
+    <canvas id="grid"></canvas>
 
-<canvas id="stars"></canvas>
-<div class="glow"></div>
+    <nav>
+        <div class="brand">TH3<span>CHAIN</span></div>
+        <div class="nav-links">
+            <a href="#">Explorer</a>
+            <a href="#">Whitepaper</a>
+            <button class="btn-primary" id="connect">CONNECT WALLET</button>
+        </div>
+    </nav>
 
-<nav>
-    <div class="logo">TH3</div>
-    <button id="connectWallet" class="nav-btn">CONNECT WALLET</button>
-</nav>
+    <main>
+        <header class="hero">
+            <div class="tag">DECENTRALIZED CIVILIZATION</div>
+            <h1>THE FUTURE IS <span>TH3</span></h1>
+            <p>Najszybsza sieć Proof-of-Work nowej generacji. W pełni zdecentralizowana, odporna na cenzurę, gotowa na masową adopcję.</p>
+            <div class="hero-btns">
+                <button class="btn-main">START MINING</button>
+                <button class="btn-sec">BUY TH3</button>
+            </div>
+        </header>
 
-<section class="hero">
-    <div class="hero-bg-text">TH3</div>
-    <h1>TH3</h1>
-    <h2>THE NETWORK IS ALIVE</h2>
-    <p>A decentralized civilization powered by Proof-of-Work and built for the future.</p>
-    <div id="walletData" class="stats-box">
-        <p>Wallet: <span id="address">Not Connected</span></p>
-    </div>
-    <a href="https://github.com/mathyias/TH3Coin" class="cta">ENTER THE NETWORK</a>
-</section>
+        <section class="stats-grid">
+            <div class="card"><h3>Total Supply</h3><p id="supply">100,000,000</p></div>
+            <div class="card"><h3>Market Cap</h3><p id="mcap">$420.69M</p></div>
+            <div class="card"><h3>Active Nodes</h3><p id="nodes">4,204</p></div>
+        </section>
+    </main>
 
-<section class="feature">
-    <div class="number">01</div>
-    <h2>DECENTRALIZED</h2>
-    <p>No central authority. No privileged access. Community first.</p>
-</section>
-
-<footer>
-    <h3>TH3CHAIN</h3>
-    <p>Built for miners. Designed for everyone.</p>
-    <a href="https://github.com/mathyias/TH3Coin" class="footer-btn">GITHUB</a>
-</footer>
-
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
