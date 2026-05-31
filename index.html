@@ -1,230 +1,95 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="theme-color" content="#030712">
+<meta property="og:title" content="TH3CHAIN">
+<meta property="og:description" content="The Network Is Alive">
+<meta property="og:type" content="website">
 <title>TH3CHAIN | The Network Is Alive</title>
-
 <script src="https://cdn.tailwindcss.com"></script>
-
 <style>
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#030712;
-overflow-x:hidden;
-}
-
-.stars{
-position:fixed;
-inset:0;
-z-index:-2;
-background:
-radial-gradient(circle at 20% 20%,rgba(0,229,255,.15),transparent 20%),
-radial-gradient(circle at 80% 30%,rgba(139,92,246,.15),transparent 25%),
-radial-gradient(circle at 50% 80%,rgba(0,229,255,.1),transparent 35%),
-#030712;
-}
-
-.glass{
-background:rgba(255,255,255,.05);
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.08);
-}
-
-.gradient-text{
-background:linear-gradient(90deg,#00e5ff,#8b5cf6);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-}
-
-.logo{
-width:90px;
-height:90px;
-
-display:flex;
-align-items:center;
-justify-content:center;
-
-font-size:28px;
-font-weight:900;
-
+html{scroll-behavior:smooth}
+body{background:#030712;color:#fff;overflow-x:hidden}
+.stars{position:fixed;inset:0;z-index:-2;background:#030712}
+.glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,#8b5cf6 0%,transparent 70%);opacity:.18;filter:blur(120px)}
+.glass{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
+.gradient{background:linear-gradient(90deg,#00e5ff,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo{width:88px;height:88px;display:flex;align-items:center;justify-content:center;font-weight:900;
 background:linear-gradient(135deg,#00e5ff,#8b5cf6);
-
-clip-path:polygon(
-25% 6%,
-75% 6%,
-100% 50%,
-75% 94%,
-25% 94%,
-0% 50%
-);
-
-box-shadow:
-0 0 40px rgba(0,229,255,.5),
-0 0 80px rgba(139,92,246,.4);
-
-animation:pulse 3s infinite;
-}
-
-@keyframes pulse{
-0%{transform:scale(1);}
-50%{transform:scale(1.08);}
-100%{transform:scale(1);}
-}
-
-.hero-bg{
-position:absolute;
-font-size:30vw;
-font-weight:900;
-opacity:.03;
-pointer-events:none;
-user-select:none;
-}
-
+clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%);
+box-shadow:0 0 30px rgba(0,229,255,.5),0 0 60px rgba(139,92,246,.4)}
+.reveal{opacity:0;transform:translateY(40px);transition:1s}
+.reveal.show{opacity:1;transform:none}
 </style>
-
 </head>
+<body>
 
-<body class="text-white">
+<canvas id="bg" class="fixed inset-0 -z-10"></canvas>
 
-<div class="stars"></div>
-
-<nav class="fixed top-0 left-0 w-full z-50 border-b border-white/10 backdrop-blur-xl bg-black/20">
-
-<div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-
-<div class="logo">
-TH3
+<nav class="fixed top-0 left-0 w-full backdrop-blur-xl bg-black/20 border-b border-white/10 z-50">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<div class="logo">TH3</div>
+<a href="https://github.com/mathyias/TH3Coin" class="hidden md:block px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 font-bold">ENTER THE NETWORK</a>
 </div>
-
-<a href="https://github.com/mathyias/TH3Coin"
-class="hidden md:block px-6 py-3 rounded-xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600">
-ENTER THE NETWORK </a>
-
-</div>
-
 </nav>
 
 <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-
-<div class="hero-bg">
-TH3
+<div class="glow"></div>
+<div class="absolute text-[30vw] font-black opacity-[0.03] select-none">TH3</div>
+<div class="uppercase tracking-[0.5em] text-cyan-400 text-xs mb-6">TH3 NETWORK ONLINE</div>
+<h1 class="text-7xl md:text-9xl font-black mb-4">TH3CHAIN</h1>
+<h2 class="text-4xl md:text-7xl font-black gradient mb-8">THE NETWORK IS ALIVE</h2>
+<p class="max-w-3xl text-slate-400 text-xl mb-10">A decentralized Proof-of-Work blockchain powered by miners, secured by the community and built for the future.</p>
+<div class="flex flex-wrap gap-4 justify-center">
+<a href="https://github.com/mathyias/TH3Coin" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 font-bold">ENTER THE NETWORK</a>
+<a href="https://github.com/mathyias/TH3Coin" class="glass px-10 py-5 rounded-2xl font-bold">GITHUB</a>
 </div>
-
-<div class="uppercase tracking-[0.4em] text-cyan-400 text-xs mb-6">
-TH3 NETWORK ONLINE
-</div>
-
-<h1 class="text-7xl md:text-9xl font-black mb-6">
-TH3CHAIN
-</h1>
-
-<h2 class="text-4xl md:text-7xl font-black gradient-text mb-8">
-THE NETWORK IS ALIVE
-</h2>
-
-<p class="max-w-3xl text-xl text-slate-400 mb-12">
-A decentralized Proof-of-Work blockchain powered by miners,
-secured by the community and built for the future.
-</p>
-
-<div class="flex flex-wrap justify-center gap-4">
-
-<a href="https://github.com/mathyias/TH3Coin"
-class="px-10 py-5 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600">
-ENTER THE NETWORK </a>
-
-<a href="https://github.com/mathyias/TH3Coin"
-class="glass px-10 py-5 rounded-2xl font-bold">
-GITHUB </a>
-
-</div>
-
 </section>
 
-<section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-3 gap-8">
-
-<div class="glass p-10 rounded-3xl">
-<div class="text-6xl font-black text-cyan-400 mb-4">01</div>
-<h3 class="text-3xl font-bold mb-4">DECENTRALIZED</h3>
-<p class="text-slate-400">
-No central authority.<br>
-No privileged access.<br>
-Community owned.
-</p>
-</div>
-
-<div class="glass p-10 rounded-3xl">
-<div class="text-6xl font-black text-purple-400 mb-4">02</div>
-<h3 class="text-3xl font-bold mb-4">MINEABLE</h3>
-<p class="text-slate-400">
-Fair Proof-of-Work.<br>
-Open participation.<br>
-Powered by miners.
-</p>
-</div>
-
-<div class="glass p-10 rounded-3xl">
-<div class="text-6xl font-black text-blue-400 mb-4">03</div>
-<h3 class="text-3xl font-bold mb-4">CONNECTED</h3>
-<p class="text-slate-400">
-AWS Infrastructure.<br>
-Oracle Infrastructure.<br>
-Global Peer-to-Peer Network.
-</p>
-</div>
-
+<section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-3 gap-8 reveal">
+<div class="glass p-10 rounded-3xl"><div class="text-6xl text-cyan-400 font-black mb-4">01</div><h3 class="text-3xl font-bold mb-4">DECENTRALIZED</h3><p class="text-slate-400">No central authority. Community owned. Open source.</p></div>
+<div class="glass p-10 rounded-3xl"><div class="text-6xl text-purple-400 font-black mb-4">02</div><h3 class="text-3xl font-bold mb-4">MINEABLE</h3><p class="text-slate-400">Fair Proof-of-Work consensus. Powered by miners.</p></div>
+<div class="glass p-10 rounded-3xl"><div class="text-6xl text-blue-400 font-black mb-4">03</div><h3 class="text-3xl font-bold mb-4">CONNECTED</h3><p class="text-slate-400">AWS and Oracle infrastructure securing the network.</p></div>
 </section>
 
-<section class="py-32 px-6 text-center">
-
-<h2 class="text-5xl md:text-7xl font-black mb-20">
-TH3 NETWORK
-</h2>
-
-<div class="flex flex-col md:flex-row justify-center items-center gap-8">
-
-<div class="glass rounded-3xl p-10 w-64">
-AWS NODE
+<section class="py-32 px-6 text-center reveal">
+<h2 class="text-5xl md:text-7xl font-black mb-20">TH3 NETWORK</h2>
+<div class="flex flex-col md:flex-row items-center justify-center gap-8">
+<div class="glass p-10 rounded-3xl w-64">AWS NODE</div>
+<div class="text-cyan-400 text-5xl">↔</div>
+<div class="glass p-10 rounded-3xl w-64 border border-cyan-500/50">TH3 CORE</div>
+<div class="text-purple-400 text-5xl">↔</div>
+<div class="glass p-10 rounded-3xl w-64">ORACLE NODE</div>
 </div>
+</section>
 
-<div class="text-cyan-400 text-5xl">
-↔
-</div>
-
-<div class="glass rounded-3xl p-10 w-64 border border-cyan-500/40">
-TH3 CORE
-</div>
-
-<div class="text-purple-400 text-5xl">
-↔
-</div>
-
-<div class="glass rounded-3xl p-10 w-64">
-ORACLE NODE
-</div>
-
-</div>
-
+<section class="py-32 px-6 text-center reveal">
+<h2 class="text-5xl md:text-8xl font-black mb-8">THE FUTURE</h2>
+<p class="max-w-2xl mx-auto text-slate-400 text-xl mb-10">TH3 is only getting started. Join the network and help build the future of decentralized value.</p>
+<a href="https://github.com/mathyias/TH3Coin" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 font-bold">ENTER THE NETWORK</a>
 </section>
 
 <footer class="border-t border-white/10 py-20 text-center">
-
-<h3 class="text-5xl font-black gradient-text mb-4">
-TH3CHAIN
-</h3>
-
-<p class="text-slate-500">
-Decentralized • Mineable • Future
-</p>
-
+<h3 class="text-5xl font-black gradient mb-4">TH3CHAIN</h3>
+<p class="text-slate-500">Decentralized • Mineable • Future</p>
 </footer>
+
+<script>
+const c=document.getElementById('bg'),x=c.getContext('2d');
+function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);
+const pts=[...Array(120)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2}));
+function a(){
+x.clearRect(0,0,c.width,c.height);
+for(let p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;
+x.fillStyle='rgba(255,255,255,.8)';x.beginPath();x.arc(p.x,p.y,1.5,0,7);x.fill();}
+for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){let dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);if(d<120){x.strokeStyle='rgba(0,229,255,'+(1-d/120)*0.15+')';x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(pts[j].x,pts[j].y);x.stroke();}}
+requestAnimationFrame(a)}
+a();
+const io=new IntersectionObserver(e=>e.forEach(v=>{if(v.isIntersecting)v.target.classList.add('show')}));
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 
 </body>
 </html>
