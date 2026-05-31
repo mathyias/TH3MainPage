@@ -1,12 +1,45 @@
+const canvas = document.getElementById("stars");
+const ctx = canvas.getContext("2d");
 
-const c=document.getElementById('stars');
-const ctx=c.getContext('2d');
-function r(){c.width=innerWidth;c.height=innerHeight}
-r();addEventListener('resize',r);
-const s=[...Array(250)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,z:Math.random()*2}));
-(function a(){
-ctx.clearRect(0,0,c.width,c.height);
-ctx.fillStyle='white';
-s.forEach(p=>{ctx.globalAlpha=Math.random();ctx.beginPath();ctx.arc(p.x,p.y,p.z,0,6.28);ctx.fill();});
-requestAnimationFrame(a);
-})();
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+resize();
+window.addEventListener("resize", resize);
+
+const stars = [];
+
+for (let i = 0; i < 300; i++) {
+    stars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 2 + 0.3,
+        v: Math.random() * 0.3 + 0.05
+    });
+}
+
+function animate() {
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const star of stars) {
+
+        star.y += star.v;
+
+        if (star.y > canvas.height) {
+            star.y = -10;
+            star.x = Math.random() * canvas.width;
+        }
+
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
+        ctx.fillStyle = "rgba(255,255,255,0.9)";
+        ctx.fill();
+    }
+
+    requestAnimationFrame(animate);
+}
+
+animate();
