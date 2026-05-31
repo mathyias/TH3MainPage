@@ -1,123 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TH3CHAIN</title>
-
-<link rel="stylesheet" href="style.css">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TH3CHAIN | Decentralized Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <canvas id="stars"></canvas>
+<div class="glow"></div>
 
 <nav>
-<div class="logo">TH3</div>
-
-<a href="https://github.com/mathyias/TH3Coin" class="nav-btn">
-ENTER THE NETWORK
-</a>
+    <div class="logo">TH3</div>
+    <button id="connectWallet" class="nav-btn">CONNECT WALLET</button>
 </nav>
 
 <section class="hero">
-
-<div class="hero-bg-text">
-TH3
-</div>
-
-<div class="glow"></div>
-
-<h1>TH3</h1>
-
-<h2>THE NETWORK IS ALIVE</h2>
-
-<p>
-A decentralized civilization powered by
-Proof-of-Work and built for the future.
-</p>
-
-<a href="https://github.com/mathyias/TH3Coin" class="cta">
-ENTER THE NETWORK
-</a>
-
+    <div class="hero-bg-text">TH3</div>
+    <h1>TH3</h1>
+    <h2>THE NETWORK IS ALIVE</h2>
+    <p>A decentralized civilization powered by Proof-of-Work and built for the future.</p>
+    <div id="walletData" class="stats-box">
+        <p>Wallet: <span id="address">Not Connected</span></p>
+    </div>
+    <a href="https://github.com/mathyias/TH3Coin" class="cta">ENTER THE NETWORK</a>
 </section>
 
 <section class="feature">
-
-<div class="number">01</div>
-
-<h2>DECENTRALIZED</h2>
-
-<p>
-No central authority.
-No privileged access.
-Community first.
-</p>
-
-</section>
-
-<section class="feature">
-
-<div class="number">02</div>
-
-<h2>MINEABLE</h2>
-
-<p>
-Open Proof-of-Work participation.
-Fair launch.
-Powered by miners.
-</p>
-
-</section>
-
-<section class="feature">
-
-<div class="number">03</div>
-
-<h2>CONNECTED</h2>
-
-<p>
-AWS Infrastructure.
-Oracle Infrastructure.
-Global Peer-to-Peer Network.
-</p>
-
-</section>
-
-<section class="feature">
-
-<div class="number">04</div>
-
-<h2>THE FUTURE</h2>
-
-<p>
-TH3 is only getting started.
-Join the network today.
-</p>
-
-<a href="https://github.com/mathyias/TH3Coin" class="cta">
-ENTER THE NETWORK
-</a>
-
+    <div class="number">01</div>
+    <h2>DECENTRALIZED</h2>
+    <p>No central authority. No privileged access. Community first.</p>
 </section>
 
 <footer>
-
-<h3>TH3CHAIN</h3>
-
-<p>
-Built for miners.<br>
-Designed for everyone.
-</p>
-
-<a href="https://github.com/mathyias/TH3Coin" class="footer-btn">
-GITHUB
-</a>
-
+    <h3>TH3CHAIN</h3>
+    <p>Built for miners. Designed for everyone.</p>
+    <a href="https://github.com/mathyias/TH3Coin" class="footer-btn">GITHUB</a>
 </footer>
 
 <script src="main.js"></script>
-
 </body>
 </html>
