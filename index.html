@@ -13,8 +13,9 @@
         --panel: rgba(255, 255, 255, 0.05);
     }
 
+    * { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-    body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; margin: 0; overflow-x: hidden; }
+    body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; overflow-x: hidden; }
     
     .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 40px; }
     .gradient { background: linear-gradient(90deg, #00f2ff, #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
@@ -22,7 +23,7 @@
     
     .reveal { opacity: 0; transform: translateY(40px); transition: 1s; }
     .reveal.show { opacity: 1; transform: none; }
-    .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle,#8b5cf6 0%,transparent 70%); opacity: .18; filter: blur(120px); z-index: -1; top: -200px; }
+    .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle,#8b5cf6 0%,transparent 70%); opacity: .18; filter: blur(120px); z-index: -1; top: -100px; }
 </style>
 </head>
 <body>
@@ -30,47 +31,36 @@
 <canvas id="bg" class="fixed inset-0 -z-10"></canvas>
 
 <nav class="fixed top-0 left-0 w-full backdrop-blur-xl bg-black/20 border-b border-white/10 z-50">
-    <div style="max-width: 1280px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 12px 24px; display: flex; justify-content: space-between; align-items: center;">
         <div class="logo">TH3</div>
         <div style="display: flex; gap: 16px;">
-            <a href="https://explorer.th3chain.cloud/" style="padding: 12px 24px; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; color: white; text-decoration: none; font-weight: bold;">EXPLORER</a>
-            <a href="https://github.com/mathyias/TH3Coin" style="padding: 12px 24px; background: linear-gradient(90deg, #06b6d4, #8b5cf6); border-radius: 16px; color: white; text-decoration: none; font-weight: bold;">ENTER THE NETWORK</a>
+            <a href="https://explorer.th3chain.cloud/" style="padding: 10px 20px; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; color: white; text-decoration: none; font-weight: bold; font-size: 14px;">EXPLORER</a>
+            <a href="https://github.com/mathyias/TH3Coin" style="padding: 10px 20px; background: linear-gradient(90deg, #06b6d4, #8b5cf6); border-radius: 16px; color: white; text-decoration: none; font-weight: bold; font-size: 14px;">ENTER THE NETWORK</a>
         </div>
     </div>
 </nav>
 
-<section style="padding-top: 180px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; text-align: center; padding-left: 20px; padding-right: 20px;">
+<section style="padding-top: 100px; padding-bottom: 60px; display: flex; flex-direction: column; align-items: center; text-align: center; padding-left: 20px; padding-right: 20px;">
     <div class="glow"></div>
-    <div style="text-transform: uppercase; letter-spacing: 0.5em; color: var(--neon); font-size: 12px; margin-bottom: 24px;">TH3 NETWORK ONLINE</div>
-    <h1 style="font-size: clamp(3rem, 10vw, 8rem); font-weight: 900; margin: 0;">TH3CHAIN</h1>
-    <h2 class="gradient" style="font-size: clamp(2rem, 5vw, 5rem); font-weight: 900; margin-bottom: 32px;">THE NETWORK IS ALIVE</h2>
-    <p style="max-width: 800px; color: #94a3b8; font-size: 1.25rem; margin-bottom: 40px;">A decentralized Proof-of-Work blockchain powered by miners, secured by the community and built for the future.</p>
+    <div style="text-transform: uppercase; letter-spacing: 0.5em; color: var(--neon); font-size: 12px; margin-bottom: 16px;">TH3 NETWORK ONLINE</div>
+    <h1 style="font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; margin: 0;">TH3CHAIN</h1>
+    <h2 class="gradient" style="font-size: clamp(2rem, 4vw, 4rem); font-weight: 900; margin-bottom: 24px;">THE NETWORK IS ALIVE</h2>
+    <p style="max-width: 600px; color: #94a3b8; font-size: 1.1rem; margin-bottom: 30px;">A decentralized Proof-of-Work blockchain powered by miners, secured by the community and built for the future.</p>
     <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
-        <a href="https://explorer.th3chain.cloud/" class="glass" style="padding: 20px 40px; text-decoration: none; color: white; font-weight: bold;">EXPLORER</a>
-        <a href="https://github.com/mathyias/TH3Coin" class="glass" style="padding: 20px 40px; text-decoration: none; color: white; font-weight: bold; background: linear-gradient(90deg, #06b6d4, #8b5cf6); border: none;">ENTER THE NETWORK</a>
+        <a href="https://explorer.th3chain.cloud/" class="glass" style="padding: 15px 30px; text-decoration: none; color: white; font-weight: bold;">EXPLORER</a>
+        <a href="https://github.com/mathyias/TH3Coin" class="glass" style="padding: 15px 30px; text-decoration: none; color: white; font-weight: bold; background: linear-gradient(90deg, #06b6d4, #8b5cf6); border: none;">ENTER THE NETWORK</a>
     </div>
 </section>
 
-<section class="reveal" style="max-width: 1280px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
-    <div class="glass"><div style="font-size: 3rem; color: var(--neon); font-weight: 900;">01</div><h3 style="font-size: 1.5rem; margin: 10px 0;">DECENTRALIZED</h3><p style="color: #94a3b8;">No central authority. Community owned. Open source.</p></div>
-    <div class="glass"><div style="font-size: 3rem; color: #c084fc; font-weight: 900;">02</div><h3 style="font-size: 1.5rem; margin: 10px 0;">MINEABLE</h3><p style="color: #94a3b8;">Fair Proof-of-Work consensus. Powered by miners.</p></div>
-    <div class="glass"><div style="font-size: 3rem; color: #60a5fa; font-weight: 900;">03</div><h3 style="font-size: 1.5rem; margin: 10px 0;">CONNECTED</h3><p style="color: #94a3b8;">AWS and Oracle infrastructure securing the network.</p></div>
+<section class="reveal" style="max-width: 1200px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+    <div class="glass"><div style="font-size: 2.5rem; color: var(--neon); font-weight: 900;">01</div><h3 style="font-size: 1.2rem; margin: 10px 0;">DECENTRALIZED</h3><p style="color: #94a3b8; font-size: 0.9rem;">No central authority. Community owned. Open source.</p></div>
+    <div class="glass"><div style="font-size: 2.5rem; color: #c084fc; font-weight: 900;">02</div><h3 style="font-size: 1.2rem; margin: 10px 0;">MINEABLE</h3><p style="color: #94a3b8; font-size: 0.9rem;">Fair Proof-of-Work consensus. Powered by miners.</p></div>
+    <div class="glass"><div style="font-size: 2.5rem; color: #60a5fa; font-weight: 900;">03</div><h3 style="font-size: 1.2rem; margin: 10px 0;">CONNECTED</h3><p style="color: #94a3b8; font-size: 0.9rem;">AWS and Oracle infrastructure securing the network.</p></div>
 </section>
 
-<section class="reveal" style="padding: 80px 24px; text-align: center;">
-    <h2 style="font-size: 4rem; font-weight: 900; margin-bottom: 40px;">TH3 NETWORK</h2>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px;">
-        <div class="glass" style="width: 250px;">AWS NODE</div>
-        <div style="color: var(--neon); font-size: 3rem;">↔</div>
-        <div class="glass" style="width: 250px; border: 1px solid var(--neon);">TH3 CORE</div>
-        <div style="color: #c084fc; font-size: 3rem;">↔</div>
-        <div class="glass" style="width: 250px;">ORACLE NODE</div>
-    </div>
-</section>
-
-<footer style="border-top: 1px solid rgba(255,255,255,0.1); padding: 80px 24px; text-align: center;">
-    <h3 class="gradient" style="font-size: 3rem; font-weight: 900;">TH3CHAIN</h3>
-    <p style="color: #64748b;">Decentralized • Mineable • Future</p>
+<footer style="padding: 60px 24px; text-align: center;">
+    <h3 class="gradient" style="font-size: 2rem; font-weight: 900;">TH3CHAIN</h3>
+    <p style="color: #64748b; font-size: 0.8rem;">Decentralized • Mineable • Future</p>
 </footer>
 
 <script>
