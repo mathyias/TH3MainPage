@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#030712">
-<meta property="og:title" content="TH3CHAIN">
-<meta property="og:description" content="The Network Is Alive">
-<meta property="og:type" content="website">
 <title>TH3CHAIN | The Network Is Alive</title>
-<script src="https://cdn.tailwindcss.com"></script>
 <style>
-html{scroll-behavior:smooth}
-body{background:#030712;color:#fff;overflow-x:hidden}
-.stars{position:fixed;inset:0;z-index:-2;background:#030712}
-.glow{position:absolute;width:900px;height:900px;border-radius:50%;background:radial-gradient(circle,#8b5cf6 0%,transparent 70%);opacity:.18;filter:blur(120px)}
-.glass{background:rgba(255,255,255,.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.08)}
-.gradient{background:linear-gradient(90deg,#00e5ff,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.logo{width:88px;height:88px;display:flex;align-items:center;justify-content:center;font-weight:900;
-background:linear-gradient(135deg,#00e5ff,#8b5cf6);
-clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%);
-box-shadow:0 0 30px rgba(0,229,255,.5),0 0 60px rgba(139,92,246,.4)}
-.reveal{opacity:0;transform:translateY(40px);transition:1s}
-.reveal.show{opacity:1;transform:none}
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&display=swap');
+    
+    :root {
+        --neon: #00f2ff;
+        --bg: #030712;
+        --panel: rgba(255, 255, 255, 0.05);
+    }
+
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; margin: 0; overflow-x: hidden; }
+    
+    .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 40px; }
+    .gradient { background: linear-gradient(90deg, #00f2ff, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .logo { width: 88px; height: 88px; display: flex; align-items: center; justify-content: center; font-weight: 900; background: linear-gradient(135deg,#00e5ff,#8b5cf6); clip-path: polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%); box-shadow: 0 0 30px rgba(0,229,255,.5); }
+    
+    .reveal { opacity: 0; transform: translateY(40px); transition: 1s; }
+    .reveal.show { opacity: 1; transform: none; }
+    .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle,#8b5cf6 0%,transparent 70%); opacity: .18; filter: blur(120px); z-index: -1; }
 </style>
 </head>
 <body>
@@ -29,66 +30,63 @@ box-shadow:0 0 30px rgba(0,229,255,.5),0 0 60px rgba(139,92,246,.4)}
 <canvas id="bg" class="fixed inset-0 -z-10"></canvas>
 
 <nav class="fixed top-0 left-0 w-full backdrop-blur-xl bg-black/20 border-b border-white/10 z-50">
-<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-<div class="logo">TH3</div>
-<a href="https://github.com/mathyias/TH3Coin" class="hidden md:block px-6 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-600 font-bold">ENTER THE NETWORK</a>
-</div>
+    <div style="max-width: 1280px; margin: 0 auto; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center;">
+        <div class="logo">TH3</div>
+        <div style="display: flex; gap: 16px;">
+            <a href="https://explorer.th3chain.cloud/" style="padding: 12px 24px; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; color: white; text-decoration: none; font-weight: bold;">EXPLORER</a>
+            <a href="https://github.com/mathyias/TH3Coin" style="padding: 12px 24px; background: linear-gradient(90deg, #06b6d4, #8b5cf6); border-radius: 16px; color: white; text-decoration: none; font-weight: bold;">ENTER THE NETWORK</a>
+        </div>
+    </div>
 </nav>
 
-<section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative overflow-hidden">
-<div class="glow"></div>
-<div class="absolute text-[30vw] font-black opacity-[0.03] select-none">TH3</div>
-<div class="uppercase tracking-[0.5em] text-cyan-400 text-xs mb-6">TH3 NETWORK ONLINE</div>
-<h1 class="text-7xl md:text-9xl font-black mb-4">TH3CHAIN</h1>
-<h2 class="text-4xl md:text-7xl font-black gradient mb-8">THE NETWORK IS ALIVE</h2>
-<p class="max-w-3xl text-slate-400 text-xl mb-10">A decentralized Proof-of-Work blockchain powered by miners, secured by the community and built for the future.</p>
-<div class="flex flex-wrap gap-4 justify-center">
-<a href="https://github.com/mathyias/TH3Coin" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 font-bold">ENTER THE NETWORK</a>
-<a href="https://github.com/mathyias/TH3Coin" class="glass px-10 py-5 rounded-2xl font-bold">GITHUB</a>
-</div>
+<section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+    <div class="glow"></div>
+    <div style="text-transform: uppercase; letter-spacing: 0.5em; color: var(--neon); font-size: 12px; margin-bottom: 24px;">TH3 NETWORK ONLINE</div>
+    <h1 style="font-size: clamp(3rem, 10vw, 8rem); font-weight: 900; margin: 0;">TH3CHAIN</h1>
+    <h2 class="gradient" style="font-size: clamp(2rem, 5vw, 5rem); font-weight: 900; margin-bottom: 32px;">THE NETWORK IS ALIVE</h2>
+    <p style="max-width: 800px; color: #94a3b8; font-size: 1.25rem; margin-bottom: 40px;">A decentralized Proof-of-Work blockchain powered by miners, secured by the community and built for the future.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; justify-content: center;">
+        <a href="https://explorer.th3chain.cloud/" class="glass" style="padding: 20px 40px; text-decoration: none; color: white; font-weight: bold;">EXPLORER</a>
+        <a href="https://github.com/mathyias/TH3Coin" class="glass" style="padding: 20px 40px; text-decoration: none; color: white; font-weight: bold; background: linear-gradient(90deg, #06b6d4, #8b5cf6); border: none;">ENTER THE NETWORK</a>
+    </div>
 </section>
 
-<section class="max-w-7xl mx-auto px-6 py-24 grid md:grid-cols-3 gap-8 reveal">
-<div class="glass p-10 rounded-3xl"><div class="text-6xl text-cyan-400 font-black mb-4">01</div><h3 class="text-3xl font-bold mb-4">DECENTRALIZED</h3><p class="text-slate-400">No central authority. Community owned. Open source.</p></div>
-<div class="glass p-10 rounded-3xl"><div class="text-6xl text-purple-400 font-black mb-4">02</div><h3 class="text-3xl font-bold mb-4">MINEABLE</h3><p class="text-slate-400">Fair Proof-of-Work consensus. Powered by miners.</p></div>
-<div class="glass p-10 rounded-3xl"><div class="text-6xl text-blue-400 font-black mb-4">03</div><h3 class="text-3xl font-bold mb-4">CONNECTED</h3><p class="text-slate-400">AWS and Oracle infrastructure securing the network.</p></div>
+<section class="reveal" style="max-width: 1280px; margin: 0 auto; padding: 100px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+    <div class="glass"><div style="font-size: 3rem; color: var(--neon); font-weight: 900;">01</div><h3 style="font-size: 1.5rem; margin: 10px 0;">DECENTRALIZED</h3><p style="color: #94a3b8;">No central authority. Community owned. Open source.</p></div>
+    <div class="glass"><div style="font-size: 3rem; color: #c084fc; font-weight: 900;">02</div><h3 style="font-size: 1.5rem; margin: 10px 0;">MINEABLE</h3><p style="color: #94a3b8;">Fair Proof-of-Work consensus. Powered by miners.</p></div>
+    <div class="glass"><div style="font-size: 3rem; color: #60a5fa; font-weight: 900;">03</div><h3 style="font-size: 1.5rem; margin: 10px 0;">CONNECTED</h3><p style="color: #94a3b8;">AWS and Oracle infrastructure securing the network.</p></div>
 </section>
 
-<section class="py-32 px-6 text-center reveal">
-<h2 class="text-5xl md:text-7xl font-black mb-20">TH3 NETWORK</h2>
-<div class="flex flex-col md:flex-row items-center justify-center gap-8">
-<div class="glass p-10 rounded-3xl w-64">AWS NODE</div>
-<div class="text-cyan-400 text-5xl">↔</div>
-<div class="glass p-10 rounded-3xl w-64 border border-cyan-500/50">TH3 CORE</div>
-<div class="text-purple-400 text-5xl">↔</div>
-<div class="glass p-10 rounded-3xl w-64">ORACLE NODE</div>
-</div>
+<section class="reveal" style="padding: 100px 24px; text-align: center;">
+    <h2 style="font-size: 4rem; font-weight: 900; margin-bottom: 80px;">TH3 NETWORK</h2>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px;">
+        <div class="glass" style="width: 250px;">AWS NODE</div>
+        <div style="color: var(--neon); font-size: 3rem;">↔</div>
+        <div class="glass" style="width: 250px; border: 1px solid var(--neon);">TH3 CORE</div>
+        <div style="color: #c084fc; font-size: 3rem;">↔</div>
+        <div class="glass" style="width: 250px;">ORACLE NODE</div>
+    </div>
 </section>
 
-<section class="py-32 px-6 text-center reveal">
-<h2 class="text-5xl md:text-8xl font-black mb-8">THE FUTURE</h2>
-<p class="max-w-2xl mx-auto text-slate-400 text-xl mb-10">TH3 is only getting started. Join the network and help build the future of decentralized value.</p>
-<a href="https://github.com/mathyias/TH3Coin" class="px-10 py-5 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 font-bold">ENTER THE NETWORK</a>
-</section>
-
-<footer class="border-t border-white/10 py-20 text-center">
-<h3 class="text-5xl font-black gradient mb-4">TH3CHAIN</h3>
-<p class="text-slate-500">Decentralized • Mineable • Future</p>
+<footer style="border-top: 1px solid rgba(255,255,255,0.1); padding: 80px 24px; text-align: center;">
+    <h3 class="gradient" style="font-size: 3rem; font-weight: 900;">TH3CHAIN</h3>
+    <p style="color: #64748b;">Decentralized • Mineable • Future</p>
 </footer>
 
 <script>
-const c=document.getElementById('bg'),x=c.getContext('2d');
-function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);
-const pts=[...Array(120)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2}));
-function a(){
-x.clearRect(0,0,c.width,c.height);
-for(let p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;
-x.fillStyle='rgba(255,255,255,.8)';x.beginPath();x.arc(p.x,p.y,1.5,0,7);x.fill();}
-for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){let dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);if(d<120){x.strokeStyle='rgba(0,229,255,'+(1-d/120)*0.15+')';x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(pts[j].x,pts[j].y);x.stroke();}}
-requestAnimationFrame(a)}
-a();
-const io=new IntersectionObserver(e=>e.forEach(v=>{if(v.isIntersecting)v.target.classList.add('show')}));
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+    const c=document.getElementById('bg'),x=c.getContext('2d');
+    function r(){c.width=innerWidth;c.height=innerHeight}r();addEventListener('resize',r);
+    const pts=[...Array(120)].map(()=>({x:Math.random()*innerWidth,y:Math.random()*innerHeight,vx:(Math.random()-.5)*.2,vy:(Math.random()-.5)*.2}));
+    function a(){
+        x.clearRect(0,0,c.width,c.height);
+        for(let p of pts){p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>c.width)p.vx*=-1;if(p.y<0||p.y>c.height)p.vy*=-1;
+        x.fillStyle='rgba(255,255,255,.8)';x.beginPath();x.arc(p.x,p.y,1.5,0,7);x.fill();}
+        for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){let dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.hypot(dx,dy);if(d<120){x.strokeStyle='rgba(0,229,255,'+(1-d/120)*0.15+')';x.beginPath();x.moveTo(pts[i].x,pts[i].y);x.lineTo(pts[j].x,pts[j].y);x.stroke();}}
+        requestAnimationFrame(a)
+    }
+    a();
+    const io=new IntersectionObserver(e=>e.forEach(v=>{if(v.isIntersecting)v.target.classList.add('show')}));
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
 
 </body>
