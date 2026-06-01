@@ -17,12 +17,12 @@
     body { background: var(--bg); color: #fff; font-family: 'Space Grotesk', sans-serif; margin: 0; overflow-x: hidden; }
     
     .glass { background: var(--panel); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 24px; padding: 40px; }
-    .gradient { background: linear-gradient(90deg, #00f2ff, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .gradient { background: linear-gradient(90deg, #00f2ff, #8b5cf6); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
     .logo { width: 88px; height: 88px; display: flex; align-items: center; justify-content: center; font-weight: 900; background: linear-gradient(135deg,#00e5ff,#8b5cf6); clip-path: polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%); box-shadow: 0 0 30px rgba(0,229,255,.5); }
     
     .reveal { opacity: 0; transform: translateY(40px); transition: 1s; }
     .reveal.show { opacity: 1; transform: none; }
-    .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle,#8b5cf6 0%,transparent 70%); opacity: .18; filter: blur(120px); z-index: -1; }
+    .glow { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: radial-gradient(circle,#8b5cf6 0%,transparent 70%); opacity: .18; filter: blur(120px); z-index: -1; top: -200px; }
 </style>
 </head>
 <body>
@@ -39,7 +39,7 @@
     </div>
 </nav>
 
-<section style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px;">
+<section style="padding-top: 180px; padding-bottom: 80px; display: flex; flex-direction: column; align-items: center; text-align: center; padding-left: 20px; padding-right: 20px;">
     <div class="glow"></div>
     <div style="text-transform: uppercase; letter-spacing: 0.5em; color: var(--neon); font-size: 12px; margin-bottom: 24px;">TH3 NETWORK ONLINE</div>
     <h1 style="font-size: clamp(3rem, 10vw, 8rem); font-weight: 900; margin: 0;">TH3CHAIN</h1>
@@ -51,14 +51,14 @@
     </div>
 </section>
 
-<section class="reveal" style="max-width: 1280px; margin: 0 auto; padding: 100px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+<section class="reveal" style="max-width: 1280px; margin: 0 auto; padding: 40px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
     <div class="glass"><div style="font-size: 3rem; color: var(--neon); font-weight: 900;">01</div><h3 style="font-size: 1.5rem; margin: 10px 0;">DECENTRALIZED</h3><p style="color: #94a3b8;">No central authority. Community owned. Open source.</p></div>
     <div class="glass"><div style="font-size: 3rem; color: #c084fc; font-weight: 900;">02</div><h3 style="font-size: 1.5rem; margin: 10px 0;">MINEABLE</h3><p style="color: #94a3b8;">Fair Proof-of-Work consensus. Powered by miners.</p></div>
     <div class="glass"><div style="font-size: 3rem; color: #60a5fa; font-weight: 900;">03</div><h3 style="font-size: 1.5rem; margin: 10px 0;">CONNECTED</h3><p style="color: #94a3b8;">AWS and Oracle infrastructure securing the network.</p></div>
 </section>
 
-<section class="reveal" style="padding: 100px 24px; text-align: center;">
-    <h2 style="font-size: 4rem; font-weight: 900; margin-bottom: 80px;">TH3 NETWORK</h2>
+<section class="reveal" style="padding: 80px 24px; text-align: center;">
+    <h2 style="font-size: 4rem; font-weight: 900; margin-bottom: 40px;">TH3 NETWORK</h2>
     <div style="display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 30px;">
         <div class="glass" style="width: 250px;">AWS NODE</div>
         <div style="color: var(--neon); font-size: 3rem;">↔</div>
