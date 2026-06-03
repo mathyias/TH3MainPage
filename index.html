@@ -3,330 +3,619 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TH3CHAIN | The Network Is Alive</title>
+<meta name="theme-color" content="#030712">
+<title>TH3Chain | Wallet, Explorer, API</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
-    --neon:#00f2ff;
-    --purple:#8b5cf6;
-    --bg:#030712;
-    --panel:rgba(255,255,255,.05);
+  --neon:#00f2ff;
+  --purple:#8b5cf6;
+  --green:#22c55e;
+  --amber:#facc15;
+  --bg:#030712;
+  --panel:rgba(255,255,255,.055);
+  --line:rgba(255,255,255,.10);
+  --muted:#94a3b8;
 }
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+  scroll-behavior:smooth;
 }
 
 body{
-    background:var(--bg);
-    color:white;
-    font-family:'Space Grotesk',sans-serif;
-    overflow-x:hidden;
+  background:var(--bg);
+  color:white;
+  font-family:'Space Grotesk',sans-serif;
+  overflow-x:hidden;
 }
 
 canvas{
-    position:fixed;
-    inset:0;
-    z-index:-10;
+  position:fixed;
+  inset:0;
+  z-index:-10;
+}
+
+a{
+  color:inherit;
 }
 
 nav{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:999;
-    backdrop-filter:blur(20px);
-    background:rgba(0,0,0,.25);
-    border-bottom:1px solid rgba(255,255,255,.08);
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:999;
+  backdrop-filter:blur(20px);
+  background:rgba(3,7,18,.72);
+  border-bottom:1px solid var(--line);
 }
 
 .nav-wrap{
-    max-width:1280px;
-    margin:auto;
-    padding:14px 24px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+  max-width:1280px;
+  margin:auto;
+  padding:14px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
 }
 
 .logo{
-    width:88px;
-    height:88px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:900;
-    background:linear-gradient(135deg,var(--neon),var(--purple));
-    clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%);
-    box-shadow:0 0 25px rgba(0,242,255,.4),0 0 60px rgba(139,92,246,.25);
-    transition:.35s;
+  width:70px;
+  height:70px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  background:linear-gradient(135deg,var(--neon),var(--purple));
+  clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%);
+  box-shadow:0 0 25px rgba(0,242,255,.35);
 }
 
-.logo:hover{
-    transform:scale(1.08) rotate(6deg);
+.nav-links{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
 }
 
 .btn{
-    text-decoration:none;
-    color:white;
-    padding:12px 22px;
-    border-radius:16px;
-    font-weight:700;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:white;
+  padding:12px 18px;
+  border-radius:14px;
+  font-weight:700;
+  border:1px solid transparent;
+  transition:.2s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
 }
 
 .btn-outline{
-    border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.13);
 }
 
 .btn-main{
-    background:linear-gradient(90deg,var(--neon),var(--purple));
-    box-shadow:0 0 25px rgba(0,242,255,.25);
+  background:linear-gradient(90deg,var(--neon),var(--purple));
+  box-shadow:0 0 25px rgba(0,242,255,.25);
 }
 
 .hero{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:0 20px;
-    position:relative;
-}
-
-.glow{
-    position:absolute;
-    width:1000px;
-    height:1000px;
-    border-radius:50%;
-    background:radial-gradient(circle,var(--purple) 0%,transparent 70%);
-    opacity:.18;
-    filter:blur(120px);
-    animation:floatGlow 12s ease-in-out infinite;
-}
-
-@keyframes floatGlow{
-    50%{
-        transform:translate(70px,50px) scale(1.15);
-    }
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:140px 20px 70px;
+  position:relative;
 }
 
 .hero h1{
-    font-size:clamp(4rem,10vw,8rem);
-    font-weight:900;
-    text-shadow:0 0 25px rgba(0,242,255,.25);
+  font-size:clamp(4rem,10vw,8rem);
+  font-weight:900;
+  text-shadow:0 0 25px rgba(0,242,255,.25);
 }
 
 .gradient{
-    background:linear-gradient(90deg,var(--neon),var(--purple));
-    -webkit-background-clip:text;
-    background-clip:text;
-    -webkit-text-fill-color:transparent;
+  background:linear-gradient(90deg,var(--neon),var(--purple));
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.hero p{
-    max-width:700px;
-    color:#94a3b8;
-    margin:25px 0 35px;
-    font-size:1.1rem;
+.hero-copy{
+  max-width:780px;
+  color:var(--muted);
+  margin:24px 0 34px;
+  font-size:1.1rem;
+  line-height:1.7;
 }
 
+.hero-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.kicker{
+  letter-spacing:.45em;
+  color:var(--neon);
+  font-size:12px;
+  margin-bottom:18px;
+}
+
+.live-strip{
+  width:100%;
+  max-width:1000px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:46px;
+}
+
+.live-card,
 .glass{
-    background:var(--panel);
-    backdrop-filter:blur(25px);
-    border:1px solid rgba(255,255,255,.08);
-    border-radius:24px;
-    padding:40px;
-    transition:.35s;
+  background:var(--panel);
+  backdrop-filter:blur(25px);
+  border:1px solid var(--line);
+  border-radius:22px;
 }
 
-.glass:hover{
-    transform:translateY(-10px);
-    border-color:rgba(0,242,255,.3);
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
+.live-card{
+  padding:18px;
+  text-align:left;
+}
+
+.live-label{
+  color:rgba(255,255,255,.55);
+  font-size:12px;
+  letter-spacing:.12em;
+}
+
+.live-value{
+  margin-top:8px;
+  font-size:22px;
+  font-weight:900;
+  word-break:break-all;
+}
+
+.status-dot{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  color:var(--green);
+}
+
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 24px;
+}
+
+.section-head{
+  margin-bottom:26px;
+}
+
+.section-head h2{
+  font-size:clamp(2rem,4vw,3rem);
+}
+
+.section-head p{
+  color:var(--muted);
+  max-width:760px;
+  margin-top:12px;
+  line-height:1.7;
 }
 
 .grid{
-    max-width:1200px;
-    margin:auto;
-    padding:80px 24px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:20px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:18px;
 }
 
-.stats{
-    max-width:1200px;
-    margin:auto;
-    padding:20px 24px 100px;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
+.glass{
+  padding:26px;
+  transition:.25s;
+}
+
+.glass:hover{
+  transform:translateY(-6px);
+  border-color:rgba(0,242,255,.28);
+  box-shadow:0 20px 50px rgba(0,0,0,.35);
+}
+
+.card-num{
+  font-size:34px;
+  font-weight:900;
+  color:var(--neon);
+  margin-bottom:10px;
+}
+
+.glass h3{
+  margin-bottom:10px;
+}
+
+.glass p{
+  color:var(--muted);
+  line-height:1.6;
+}
+
+.stack{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:18px;
+}
+
+.flow{
+  display:grid;
+  gap:10px;
+}
+
+.flow-step{
+  padding:14px 16px;
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  color:#dbeafe;
+}
+
+.link-panel{
+  display:grid;
+  gap:12px;
+}
+
+.link-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  padding:14px 16px;
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
+  text-decoration:none;
+}
+
+.link-row span{
+  color:var(--muted);
+  font-size:13px;
+}
+
+.code{
+  color:var(--neon);
+  font-family:monospace;
+  word-break:break-all;
 }
 
 footer{
-    text-align:center;
-    padding:80px 20px;
+  text-align:center;
+  padding:80px 20px;
+  color:#64748b;
 }
 
 .reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s;
+  opacity:0;
+  transform:translateY(34px);
+  transition:.8s;
 }
 
 .reveal.show{
-    opacity:1;
-    transform:none;
+  opacity:1;
+  transform:none;
+}
+
+@media(max-width:900px){
+  .live-strip,
+  .stack{
+    grid-template-columns:1fr;
+  }
 }
 
 @media(max-width:768px){
-    .nav-wrap{
-        flex-direction:column;
-        gap:15px;
-    }
+  .nav-wrap{
+    flex-direction:column;
+  }
+
+  .nav-links{
+    justify-content:center;
+  }
+
+  .hero{
+    padding-top:170px;
+  }
+
+  .hero h1{
+    font-size:3.8rem;
+  }
+
+  .btn{
+    width:100%;
+  }
+
+  .hero-actions{
+    width:100%;
+  }
 }
 </style>
 </head>
-<body>
 
+<body>
 <canvas id="bg"></canvas>
 
 <nav>
-<div class="nav-wrap">
-<div class="logo">TH3</div>
-<div style="display:flex;gap:12px;flex-wrap:wrap;">
-<a class="btn btn-outline" href="https://explorer.th3chain.cloud/">EXPLORER</a>
-<a class="btn btn-main" href="https://github.com/mathyias/TH3Coin">ENTER THE NETWORK</a>
-</div>
-</div>
+  <div class="nav-wrap">
+    <div class="logo">TH3</div>
+
+    <div class="nav-links">
+      <a class="btn btn-outline" href="https://wallet.th3chain.cloud">Wallet</a>
+      <a class="btn btn-outline" href="https://explorer.th3chain.cloud">Explorer</a>
+      <a class="btn btn-outline" href="https://api.th3chain.cloud/api/network" target="_blank" rel="noreferrer">API</a>
+      <a class="btn btn-main" href="https://github.com/mathyias/TH3Coin" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </div>
 </nav>
 
 <section class="hero">
-<div class="glow"></div>
+  <div class="kicker">TH3 NETWORK ONLINE</div>
 
-<div style="letter-spacing:.5em;color:var(--neon);font-size:12px;margin-bottom:20px;">
-TH3 NETWORK ONLINE
-</div>
+  <h1>TH3CHAIN</h1>
 
-<h1>TH3CHAIN</h1>
+  <h2 class="gradient" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;">
+    SELF-CUSTODY POW NETWORK
+  </h2>
 
-<h2 class="gradient" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;">
-THE NETWORK IS ALIVE
-</h2>
+  <p class="hero-copy">
+    TH3Chain is a Ravencoin-based Proof-of-Work UTXO chain with a live explorer,
+    public API, and browser wallet. TH3 Wallet builds and signs transactions locally,
+    then broadcasts signed raw transactions through the TH3 API.
+  </p>
 
-<p>
-A decentralized Proof-of-Work blockchain powered by miners,
-secured by the community and built for the future.
-</p>
+  <div class="hero-actions">
+    <a class="btn btn-main" href="https://wallet.th3chain.cloud">Open Wallet</a>
+    <a class="btn btn-outline" href="https://explorer.th3chain.cloud">Open Explorer</a>
+    <a class="btn btn-outline" href="#network">Network Status</a>
+  </div>
 
-<div style="display:flex;gap:15px;flex-wrap:wrap;justify-content:center;">
-<a class="btn btn-outline glass" href="https://explorer.th3chain.cloud/">EXPLORER</a>
-<a class="btn btn-main" href="https://github.com/mathyias/TH3Coin">ENTER THE NETWORK</a>
-</div>
+  <div class="live-strip" id="network">
+    <div class="live-card">
+      <div class="live-label">STATUS</div>
+      <div class="live-value status-dot" id="statusValue">● Loading</div>
+    </div>
+
+    <div class="live-card">
+      <div class="live-label">HEIGHT</div>
+      <div class="live-value" id="heightValue">-</div>
+    </div>
+
+    <div class="live-card">
+      <div class="live-label">PEERS</div>
+      <div class="live-value" id="peersValue">-</div>
+    </div>
+
+    <div class="live-card">
+      <div class="live-label">HASHRATE</div>
+      <div class="live-value" id="hashrateValue">-</div>
+    </div>
+  </div>
 </section>
 
-<section class="grid reveal">
-<div class="glass">
-<h2 style="color:var(--neon);font-size:3rem;">01</h2>
-<h3>DECENTRALIZED</h3>
-<p>Community driven and open source.</p>
-</div>
+<section class="section reveal">
+  <div class="section-head">
+    <h2>What Works Now</h2>
+    <p>
+      The core user flow is live: create or import a seed phrase, generate a TH3 address,
+      receive UTXO, sign locally, broadcast, and inspect the confirmed transaction in Explorer.
+    </p>
+  </div>
 
-<div class="glass">
-<h2 style="color:#c084fc;font-size:3rem;">02</h2>
-<h3>MINEABLE</h3>
-<p>Fair Proof‑of‑Work consensus.</p>
-</div>
+  <div class="grid">
+    <div class="glass">
+      <div class="card-num">01</div>
+      <h3>TH3 Wallet</h3>
+      <p>Seed phrase wallet with password lock, import, QR code, balance, history, send UI, and auto refresh.</p>
+    </div>
 
-<div class="glass">
-<h2 style="color:#60a5fa;font-size:3rem;">03</h2>
-<h3>CONNECTED</h3>
-<p>AWS and Oracle infrastructure.</p>
-</div>
+    <div class="glass">
+      <div class="card-num">02</div>
+      <h3>Local Signing</h3>
+      <p>Transactions are built from UTXO and signed inside the wallet. The seed and private key never go to the API.</p>
+    </div>
+
+    <div class="glass">
+      <div class="card-num">03</div>
+      <h3>Explorer</h3>
+      <p>Blocks, addresses, UTXO and transaction details are visible through the public explorer.</p>
+    </div>
+
+    <div class="glass">
+      <div class="card-num">04</div>
+      <h3>Broadcast API</h3>
+      <p>The API exposes network status, balances, history, UTXO and signed raw transaction broadcast.</p>
+    </div>
+  </div>
 </section>
 
-<section class="stats reveal">
-<div class="glass"><h2>24/7</h2><p>Network Uptime</p></div>
-<div class="glass"><h2>PoW</h2><p>Proof Of Work</p></div>
-<div class="glass"><h2>∞</h2><p>Future Ready</p></div>
+<section class="section reveal">
+  <div class="stack">
+    <div class="glass">
+      <h2 class="gradient">Wallet Transaction Flow</h2>
+      <p style="margin:14px 0 20px;color:var(--muted);line-height:1.7;">
+        This is the transaction path currently working on TH3 Wallet.
+      </p>
+
+      <div class="flow">
+        <div class="flow-step">Seed Phrase</div>
+        <div class="flow-step">Private Key</div>
+        <div class="flow-step">TH3 Address</div>
+        <div class="flow-step">UTXO Selection</div>
+        <div class="flow-step">Raw Transaction</div>
+        <div class="flow-step">Local Signature</div>
+        <div class="flow-step">Broadcast</div>
+        <div class="flow-step">Explorer Confirmation</div>
+      </div>
+    </div>
+
+    <div class="glass">
+      <h2>Network Links</h2>
+      <p style="margin:14px 0 20px;color:var(--muted);line-height:1.7;">
+        Open the live tools and infrastructure.
+      </p>
+
+      <div class="link-panel">
+        <a class="link-row" href="https://wallet.th3chain.cloud">
+          <strong>Wallet</strong>
+          <span>wallet.th3chain.cloud</span>
+        </a>
+
+        <a class="link-row" href="https://explorer.th3chain.cloud">
+          <strong>Explorer</strong>
+          <span>explorer.th3chain.cloud</span>
+        </a>
+
+        <a class="link-row" href="https://api.th3chain.cloud/api/network" target="_blank" rel="noreferrer">
+          <strong>API Status</strong>
+          <span>/api/network</span>
+        </a>
+
+        <a class="link-row" href="https://github.com/mathyias/TH3Coin" target="_blank" rel="noreferrer">
+          <strong>Source</strong>
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="glass">
+    <h2>Live Chain Snapshot</h2>
+    <p style="margin:14px 0 18px;color:var(--muted);">
+      Pulled directly from the TH3 public API.
+    </p>
+
+    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+      <tr>
+        <td style="padding:12px 0;color:var(--muted);width:160px;">Best Block</td>
+        <td class="code" id="bestblockValue">-</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0;color:var(--muted);">Difficulty</td>
+        <td class="code" id="difficultyValue">-</td>
+      </tr>
+      <tr>
+        <td style="padding:12px 0;color:var(--muted);">Version</td>
+        <td class="code" id="versionValue">-</td>
+      </tr>
+    </table>
+  </div>
 </section>
 
 <footer>
-<h2 class="gradient">TH3CHAIN</h2>
-<p style="color:#64748b;">Decentralized • Mineable • Future</p>
+  <h2 class="gradient">TH3CHAIN</h2>
+  <p>Proof-of-Work • Self-Custody Wallet • Explorer • Public API</p>
 </footer>
 
 <script>
-const c=document.getElementById('bg');
-const x=c.getContext('2d');
+const API = 'https://api.th3chain.cloud/api/network';
+
+async function loadNetwork(){
+  try{
+    const res = await fetch(API);
+    const data = await res.json();
+
+    document.getElementById('statusValue').textContent = '● Online';
+    document.getElementById('heightValue').textContent = data.height ?? '-';
+    document.getElementById('peersValue').textContent = data.peers ?? '-';
+    document.getElementById('hashrateValue').textContent = Number(data.hashrate || 0).toExponential(2);
+    document.getElementById('bestblockValue').textContent = data.bestblock || '-';
+    document.getElementById('difficultyValue').textContent = data.difficulty ?? '-';
+    document.getElementById('versionValue').textContent = data.version || '-';
+  }catch(e){
+    document.getElementById('statusValue').textContent = '● API Offline';
+    document.getElementById('statusValue').style.color = '#f87171';
+  }
+}
+
+const c = document.getElementById('bg');
+const x = c.getContext('2d');
 
 function resize(){
-c.width=innerWidth;
-c.height=innerHeight;
+  c.width = innerWidth;
+  c.height = innerHeight;
 }
-resize();
-addEventListener('resize',resize);
 
-const pts=[...Array(120)].map(()=>({
-x:Math.random()*innerWidth,
-y:Math.random()*innerHeight,
-vx:(Math.random()-.5)*.2,
-vy:(Math.random()-.5)*.2
+resize();
+addEventListener('resize', resize);
+
+const pts = [...Array(120)].map(() => ({
+  x: Math.random() * innerWidth,
+  y: Math.random() * innerHeight,
+  vx: (Math.random() - .5) * .2,
+  vy: (Math.random() - .5) * .2
 }));
 
 function draw(){
-x.clearRect(0,0,c.width,c.height);
+  x.clearRect(0, 0, c.width, c.height);
 
-for(const p of pts){
-p.x+=p.vx;
-p.y+=p.vy;
+  for(const p of pts){
+    p.x += p.vx;
+    p.y += p.vy;
 
-if(p.x<0||p.x>c.width)p.vx*=-1;
-if(p.y<0||p.y>c.height)p.vy*=-1;
+    if(p.x < 0 || p.x > c.width) p.vx *= -1;
+    if(p.y < 0 || p.y > c.height) p.vy *= -1;
 
-x.beginPath();
-x.arc(p.x,p.y,1.5,0,7);
-x.fillStyle='rgba(255,255,255,.8)';
-x.fill();
+    x.beginPath();
+    x.arc(p.x, p.y, 1.5, 0, 7);
+    x.fillStyle = 'rgba(255,255,255,.72)';
+    x.fill();
+  }
+
+  for(let i = 0; i < pts.length; i++){
+    for(let j = i + 1; j < pts.length; j++){
+      const dx = pts[i].x - pts[j].x;
+      const dy = pts[i].y - pts[j].y;
+      const d = Math.hypot(dx, dy);
+
+      if(d < 120){
+        x.strokeStyle = 'rgba(0,242,255,' + (1 - d / 120) * 0.14 + ')';
+        x.beginPath();
+        x.moveTo(pts[i].x, pts[i].y);
+        x.lineTo(pts[j].x, pts[j].y);
+        x.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(draw);
 }
 
-for(let i=0;i<pts.length;i++){
-for(let j=i+1;j<pts.length;j++){
-const dx=pts[i].x-pts[j].x;
-const dy=pts[i].y-pts[j].y;
-const d=Math.hypot(dx,dy);
-
-if(d<120){
-x.strokeStyle='rgba(0,242,255,'+(1-d/120)*0.15+')';
-x.beginPath();
-x.moveTo(pts[i].x,pts[i].y);
-x.lineTo(pts[j].x,pts[j].y);
-x.stroke();
-}
-}
-}
-
-requestAnimationFrame(draw);
-}
 draw();
+loadNetwork();
+setInterval(loadNetwork, 15000);
 
-const io=new IntersectionObserver(entries=>{
-entries.forEach(e=>{
-if(e.isIntersecting)e.target.classList.add('show');
-});
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('show');
+  });
 });
 
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 
 </body>
