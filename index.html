@@ -404,7 +404,7 @@ footer{
     </div>
 
     <div class="live-card">
-      <div class="live-label">PEERS</div>
+      <div class="live-label">NODES</div>
       <div class="live-value" id="peersValue">-</div>
     </div>
 
@@ -541,7 +541,12 @@ async function loadNetwork(){
 
     document.getElementById('statusValue').textContent = '● Online';
     document.getElementById('heightValue').textContent = data.height ?? '-';
-    document.getElementById('peersValue').textContent = data.peers ?? '-';
+    const nodes = await fetch(
+  'https://api.th3chain.cloud/api/nodes'
+).then(r => r.json());
+
+document.getElementById('peersValue').textContent =
+  nodes.nodes ?? '-';
     document.getElementById('hashrateValue').textContent = Number(data.hashrate || 0).toExponential(2);
     document.getElementById('bestblockValue').textContent = data.bestblock || '-';
     document.getElementById('difficultyValue').textContent = data.difficulty ?? '-';
