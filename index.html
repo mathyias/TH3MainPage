@@ -89,6 +89,20 @@ nav{
   justify-content:flex-end;
 }
 
+.menu-toggle{
+  display:none;
+  min-width:auto;
+  padding:10px 14px;
+  border:1px solid rgba(255,255,255,.13);
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  box-shadow:none;
+  font-family:inherit;
+  font-weight:700;
+  cursor:pointer;
+}
+
 .btn{
   display:inline-flex;
   align-items:center;
@@ -395,12 +409,26 @@ footer{
 
 @media(max-width:768px){
   .nav-wrap{
-    flex-direction:column;
+    flex-direction:row;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+
+  .menu-toggle{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
   }
 
   .nav-links{
-    justify-content:center;
+    display:none;
     width:100%;
+    flex-direction:column;
+    padding-top:12px;
+  }
+
+  .nav-links.open{
+    display:flex;
   }
 
   .btn{
@@ -412,7 +440,7 @@ footer{
   }
 
   .hero{
-    padding-top:190px;
+    padding-top:128px;
   }
 
   .hero h1{
@@ -440,7 +468,11 @@ footer{
   <div class="nav-wrap">
     <div class="logo">TH3</div>
 
-    <div class="nav-links">
+    <button class="menu-toggle" id="menuToggle" type="button">
+      Menu
+    </button>
+
+    <div class="nav-links" id="navLinks">
       <a class="btn btn-outline" href="https://wallet.th3chain.cloud">Wallet</a>
       <a class="btn btn-outline" href="https://explorer.th3chain.cloud">Explorer</a>
       <a class="btn btn-outline" href="https://api.th3chain.cloud/api/network" target="_blank" rel="noreferrer">API</a>
@@ -458,7 +490,7 @@ footer{
 
   <p class="hero-copy">
     TH3Chain is a Ravencoin-based Proof-of-Work UTXO network with a self-custody browser wallet,
-    live explorer, public API, mining support, AWS and Oracle seed nodes.
+    live explorer, public API, mining support, AWS seed nodes and private pool infrastructure.
     TH3 Wallet builds and signs transactions locally, then broadcasts signed raw transactions through the TH3 API.
   </p>
 
@@ -615,14 +647,14 @@ footer{
 
       <div class="node-panel">
         <div class="node-row">
-  <strong>seed.th3chain.cloud</strong>
-  <span class="badge badge-good">AWS Stockholm</span>
-</div>
+          <strong>seed.th3chain.cloud</strong>
+          <span class="badge badge-good">AWS Stockholm</span>
+        </div>
 
-<div class="node-row">
-  <strong>seed2.th3chain.cloud</strong>
-  <span class="badge badge-good">AWS Frankfurt</span>
-</div>
+        <div class="node-row">
+          <strong>seed2.th3chain.cloud</strong>
+          <span class="badge badge-good">AWS Frankfurt</span>
+        </div>
 
         <div class="node-row">
           <strong>pool.th3chain.cloud</strong>
@@ -706,6 +738,21 @@ async function loadNetwork(){
     document.getElementById('statusValue').style.color = '#fb7185';
     document.getElementById('seedNodeText').textContent = 'Unavailable';
   }
+}
+
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+
+if(menuToggle && navLinks){
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  navLinks.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+    });
+  });
 }
 
 const c = document.getElementById('bg');
