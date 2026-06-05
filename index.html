@@ -12,6 +12,7 @@
 :root{
   --neon:#5df6ff;
   --green:#4ade80;
+  --amber:#facc15;
   --red:#fb7185;
   --bg:#020617;
   --panel:rgba(255,255,255,.08);
@@ -32,7 +33,7 @@ html{
 body{
   background:
     radial-gradient(circle at top left, rgba(93,246,255,.15), transparent 40%),
-    radial-gradient(circle at bottom right, rgba(255,255,255,.08), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(34,197,94,.08), transparent 38%),
     linear-gradient(180deg,#0f172a 0%,#020617 100%);
   color:#fff;
   font-family:'Space Grotesk',sans-serif;
@@ -55,7 +56,7 @@ nav{
   z-index:999;
   backdrop-filter:blur(26px);
   -webkit-backdrop-filter:blur(26px);
-  background:rgba(2,6,23,.74);
+  background:rgba(2,6,23,.78);
   border-bottom:1px solid var(--line);
 }
 
@@ -114,6 +115,7 @@ nav{
   font-weight:700;
   border:1px solid transparent;
   transition:.2s;
+  white-space:nowrap;
 }
 
 .btn:hover{
@@ -142,7 +144,7 @@ nav{
 }
 
 .kicker{
-  letter-spacing:.36em;
+  letter-spacing:.34em;
   color:var(--neon);
   font-size:12px;
   margin-bottom:18px;
@@ -152,7 +154,6 @@ nav{
   font-size:clamp(3.8rem,10vw,8rem);
   line-height:.95;
   font-weight:900;
-  letter-spacing:-.04em;
 }
 
 .gradient{
@@ -167,7 +168,7 @@ nav{
 }
 
 .hero-copy{
-  max-width:790px;
+  max-width:850px;
   color:var(--muted);
   margin:24px 0 34px;
   font-size:1.08rem;
@@ -183,7 +184,7 @@ nav{
 
 .live-strip{
   width:100%;
-  max-width:980px;
+  max-width:1080px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:14px;
@@ -224,6 +225,14 @@ nav{
   color:var(--green);
 }
 
+.status-warn{
+  color:var(--amber);
+}
+
+.status-offline{
+  color:var(--red);
+}
+
 .section{
   max-width:1180px;
   margin:auto;
@@ -240,7 +249,7 @@ nav{
 
 .section-head p{
   color:var(--muted);
-  max-width:780px;
+  max-width:820px;
   margin-top:12px;
   line-height:1.7;
 }
@@ -353,6 +362,12 @@ nav{
   border:1px solid rgba(34,197,94,.24);
 }
 
+.badge-info{
+  color:var(--neon);
+  background:rgba(93,246,255,.10);
+  border:1px solid rgba(93,246,255,.22);
+}
+
 .badge-muted{
   color:rgba(255,255,255,.68);
   background:rgba(255,255,255,.08);
@@ -457,6 +472,10 @@ footer{
     flex-direction:column;
     align-items:flex-start;
   }
+
+  .snapshot-table td:first-child{
+    width:110px;
+  }
 }
 </style>
 </head>
@@ -468,13 +487,14 @@ footer{
   <div class="nav-wrap">
     <div class="logo">TH3</div>
 
-    <button class="menu-toggle" id="menuToggle" type="button">
+    <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false">
       Menu
     </button>
 
     <div class="nav-links" id="navLinks">
       <a class="btn btn-outline" href="https://wallet.th3chain.cloud">Wallet</a>
       <a class="btn btn-outline" href="https://explorer.th3chain.cloud">Explorer</a>
+      <a class="btn btn-outline" href="https://miner.th3chain.cloud">Mining</a>
       <a class="btn btn-outline" href="https://api.th3chain.cloud/api/network" target="_blank" rel="noreferrer">API</a>
       <a class="btn btn-main" href="https://github.com/mathyias/TH3Coin" target="_blank" rel="noreferrer">GitHub</a>
     </div>
@@ -489,21 +509,23 @@ footer{
   <h2>Wallet. Explorer. Mining. API.</h2>
 
   <p class="hero-copy">
-    TH3Chain is a Ravencoin-based Proof-of-Work UTXO network with a self-custody browser wallet,
-    live explorer, public API, mining support, AWS seed nodes and private pool infrastructure.
-    TH3 Wallet builds and signs transactions locally, then broadcasts signed raw transactions through the TH3 API.
+    TH3Chain is a Proof-of-Work UTXO network powered by TH3 Core, KAWPOW mining,
+    self-custody wallet infrastructure, live explorer, public API, seed nodes and
+    an active mining pool. The core stack is now rebranded around TH3 with th3d,
+    th3-cli, TH3 Wallet, TH3 API and TH3 Pool.
   </p>
 
   <div class="hero-actions">
     <a class="btn btn-main" href="https://wallet.th3chain.cloud">Open Wallet</a>
     <a class="btn btn-outline" href="https://explorer.th3chain.cloud">Open Explorer</a>
+    <a class="btn btn-outline" href="https://miner.th3chain.cloud">Start Mining</a>
     <a class="btn btn-outline" href="#network">Network Status</a>
   </div>
 
   <div class="live-strip" id="network">
     <div class="live-card">
-      <div class="live-label">Status</div>
-      <div class="live-value status-online" id="statusValue">● Loading</div>
+      <div class="live-label">API Status</div>
+      <div class="live-value status-warn" id="statusValue">Loading</div>
     </div>
 
     <div class="live-card">
@@ -512,13 +534,13 @@ footer{
     </div>
 
     <div class="live-card">
-      <div class="live-label">Seed Nodes</div>
-      <div class="live-value" id="nodesValue">-</div>
+      <div class="live-label">Peers</div>
+      <div class="live-value" id="peersValue">-</div>
     </div>
 
     <div class="live-card">
-      <div class="live-label">Hashrate</div>
-      <div class="live-value" id="hashrateValue">-</div>
+      <div class="live-label">Pool</div>
+      <div class="live-value" id="poolValue">Checking</div>
     </div>
   </div>
 </section>
@@ -527,46 +549,46 @@ footer{
   <div class="section-head">
     <h2>Live TH3 Stack</h2>
     <p>
-      The core chain stack is already connected: wallet, explorer, API, mining, internal pool,
-      UTXO history, broadcast endpoint and seed infrastructure.
+      TH3 is no longer just a chain binary. The live ecosystem now includes the chain nodes,
+      browser wallet, explorer, public API, mining page, pool statistics and automatic pool payouts.
     </p>
   </div>
 
   <div class="grid">
     <div class="glass">
       <div class="card-num">01</div>
-      <h3>TH3 Wallet</h3>
-      <p>Seed phrase wallet with import, password lock, QR code, balance, history, send UI, fee display and auto refresh.</p>
+      <h3>TH3 Core</h3>
+      <p>Core daemon and CLI are rebranded around TH3 with th3d and th3-cli running on production AWS nodes.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">02</div>
-      <h3>Self-Custody Send</h3>
-      <p>Transactions are built from UTXO and signed locally. Seed and private key never leave the wallet.</p>
+      <h3>TH3 Wallet</h3>
+      <p>Seed phrase wallet with import, password lock, address generation, QR code, balance, history and send flow.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">03</div>
-      <h3>TH3 Explorer</h3>
-      <p>Blocks, addresses, UTXO, mining rewards and transaction details are readable through the public explorer.</p>
+      <h3>Local Signing</h3>
+      <p>Wallet transactions are built from UTXO data and signed locally before broadcast through the TH3 API.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">04</div>
-      <h3>Mining Support</h3>
-      <p>Mining rewards are tracked in wallet history, including immature rewards before they reach spendable maturity.</p>
+      <h3>TH3 Explorer</h3>
+      <p>Blocks, transactions, addresses, UTXO, mining rewards and confirmations are available through the explorer.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">05</div>
-      <h3>Public API</h3>
-      <p>API exposes network status, balances, rich history, UTXO, transaction lookup and signed raw transaction broadcast.</p>
+      <h3>TH3 API</h3>
+      <p>Public endpoints expose network status, address balance, rich history, UTXOs, transactions and raw broadcast.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">06</div>
-      <h3>Private Pool Ready</h3>
-      <p>TH3 pool infrastructure is online for internal testing. Rigel miner has been tested against the pool successfully.</p>
+      <h3>TH3 Pool</h3>
+      <p>KAWPOW mining pool is online with pool statistics, miner panel and automatic payout processing.</p>
     </div>
   </div>
 </section>
@@ -574,9 +596,73 @@ footer{
 <section class="section reveal">
   <div class="stack">
     <div class="glass">
-      <h2 class="gradient">Wallet Transaction Flow</h2>
+      <h2 class="gradient">Production Architecture</h2>
       <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
-        This is the working transaction path in TH3 Wallet.
+        TH3 infrastructure is split across two AWS nodes so API and mining are not trapped on one machine.
+      </p>
+
+      <div class="node-panel">
+        <div class="node-row">
+          <strong>AWS 1</strong>
+          <span class="badge badge-good">Stockholm</span>
+        </div>
+        <div class="node-row">
+          <strong>Chain + Seed + API</strong>
+          <span>TH3Coin, TH3Api, seed.th3chain.cloud</span>
+        </div>
+        <div class="node-row">
+          <strong>AWS 2</strong>
+          <span class="badge badge-good">Frankfurt</span>
+        </div>
+        <div class="node-row">
+          <strong>Chain + Seed2 + Pool</strong>
+          <span>TH3Coin, TH3Pool, seed2.th3chain.cloud</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass">
+      <h2>Network Links</h2>
+      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
+        Public tools connected to the live TH3 network.
+      </p>
+
+      <div class="link-panel">
+        <a class="link-row" href="https://wallet.th3chain.cloud">
+          <strong>Wallet</strong>
+          <span>wallet.th3chain.cloud</span>
+        </a>
+
+        <a class="link-row" href="https://explorer.th3chain.cloud">
+          <strong>Explorer</strong>
+          <span>explorer.th3chain.cloud</span>
+        </a>
+
+        <a class="link-row" href="https://miner.th3chain.cloud">
+          <strong>Mining</strong>
+          <span>miner.th3chain.cloud</span>
+        </a>
+
+        <a class="link-row" href="https://api.th3chain.cloud/api/network" target="_blank" rel="noreferrer">
+          <strong>API Status</strong>
+          <span>api.th3chain.cloud/api/network</span>
+        </a>
+
+        <a class="link-row" href="https://github.com/mathyias/TH3Coin" target="_blank" rel="noreferrer">
+          <strong>Source</strong>
+          <span>github.com/mathyias/TH3Coin</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="stack">
+    <div class="glass">
+      <h2>Wallet Transaction Flow</h2>
+      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
+        The TH3 Wallet send path is built around self-custody and local transaction signing.
       </p>
 
       <div class="flow">
@@ -592,83 +678,35 @@ footer{
     </div>
 
     <div class="glass">
-      <h2>Network Links</h2>
+      <h2>Mining And Payouts</h2>
       <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
-        Open the public live tools.
-      </p>
-
-      <div class="link-panel">
-        <a class="link-row" href="https://wallet.th3chain.cloud">
-          <strong>Wallet</strong>
-          <span>wallet.th3chain.cloud</span>
-        </a>
-
-        <a class="link-row" href="https://explorer.th3chain.cloud">
-          <strong>Explorer</strong>
-          <span>explorer.th3chain.cloud</span>
-        </a>
-
-        <a class="link-row" href="https://api.th3chain.cloud/api/network" target="_blank" rel="noreferrer">
-          <strong>API Status</strong>
-          <span>/api/network</span>
-        </a>
-
-        <a class="link-row" href="https://github.com/mathyias/TH3Coin" target="_blank" rel="noreferrer">
-          <strong>Source</strong>
-          <span>GitHub</span>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section reveal">
-  <div class="stack">
-    <div class="glass">
-      <h2>Mining And Maturity</h2>
-      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
-        TH3Chain is mineable Proof-of-Work. Coinbase rewards appear in wallet history as mining rewards.
-        Fresh mining rewards are marked as immature until they reach spendable maturity.
-      </p>
-
-      <div class="flow">
-        <div class="flow-step">Mine block</div>
-        <div class="flow-step">Coinbase reward appears in wallet history</div>
-        <div class="flow-step">Immature reward waits for confirmations</div>
-        <div class="flow-step">Mature reward becomes spendable UTXO</div>
-      </div>
-    </div>
-
-    <div class="glass">
-      <h2>Pool And Seed Infrastructure</h2>
-      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
-        TH3 pool and seed infrastructure is online. Pool access is not published yet while internal mining tests continue.
+        TH3 Pool accepts KAWPOW shares, tracks valid blocks, shows miner activity and processes automatic payouts.
       </p>
 
       <div class="node-panel">
         <div class="node-row">
-          <strong>seed.th3chain.cloud</strong>
-          <span class="badge badge-good">AWS Stockholm</span>
+          <strong>Algorithm</strong>
+          <span class="badge badge-info">KAWPOW</span>
         </div>
 
         <div class="node-row">
-          <strong>seed2.th3chain.cloud</strong>
-          <span class="badge badge-good">AWS Frankfurt</span>
-        </div>
-
-<div class="node-row">
-  <strong>Mining pool</strong>
-  <span class="badge badge-muted">Internal testing</span>
-</div>
-
-        <div class="node-row">
-          <strong>Rigel miner</strong>
-          <span class="badge badge-good">Tested</span>
+          <strong>Pool fee</strong>
+          <span id="poolFeeText">Checking...</span>
         </div>
 
         <div class="node-row">
-          <strong>Live reachable seeds</strong>
-          <span id="seedNodeText">Checking...</span>
+          <strong>Minimum payout</strong>
+          <span id="minPayoutText">Checking...</span>
+        </div>
+
+        <div class="node-row">
+          <strong>Automatic payouts</strong>
+          <span class="badge badge-good">Every 10 minutes</span>
+        </div>
+
+        <div class="node-row">
+          <strong>Mining page</strong>
+          <span>miner.th3chain.cloud</span>
         </div>
       </div>
     </div>
@@ -692,12 +730,12 @@ footer{
         <td class="code" id="difficultyValue">-</td>
       </tr>
       <tr>
-        <td>Version</td>
-        <td class="code" id="versionValue">-</td>
+        <td>Hashrate</td>
+        <td class="code" id="hashrateValue">-</td>
       </tr>
       <tr>
-        <td>Peers</td>
-        <td class="code" id="peersValue">-</td>
+        <td>Version</td>
+        <td class="code" id="versionValue">-</td>
       </tr>
     </table>
   </div>
@@ -710,33 +748,46 @@ footer{
 
 <script>
 const NETWORK_API = 'https://api.th3chain.cloud/api/network';
-const NODES_API = 'https://api.th3chain.cloud/api/nodes';
+const POOL_API = 'https://pool.th3chain.cloud/api/pool/stats';
 
 async function loadNetwork(){
   try{
-    const [networkRes, nodesRes] = await Promise.all([
-      fetch(NETWORK_API),
-      fetch(NODES_API)
-    ]);
+    const res = await fetch(NETWORK_API);
+    if(!res.ok) throw new Error('Network API unavailable');
 
-    const data = await networkRes.json();
-    const nodes = await nodesRes.json();
+    const data = await res.json();
 
-    document.getElementById('statusValue').textContent = '● Online';
+    document.getElementById('statusValue').textContent = 'Online';
     document.getElementById('statusValue').className = 'live-value status-online';
     document.getElementById('heightValue').textContent = data.height ?? '-';
-    document.getElementById('nodesValue').textContent = nodes.nodes ?? '-';
-    document.getElementById('hashrateValue').textContent = Number(data.hashrate || 0).toExponential(2);
+    document.getElementById('peersValue').textContent = data.peers ?? '-';
 
     document.getElementById('bestblockValue').textContent = data.bestblock || '-';
     document.getElementById('difficultyValue').textContent = data.difficulty ?? '-';
+    document.getElementById('hashrateValue').textContent = Number(data.hashrate || 0).toExponential(2);
     document.getElementById('versionValue').textContent = data.version || '-';
-    document.getElementById('peersValue').textContent = data.peers ?? '-';
-    document.getElementById('seedNodeText').textContent = `${nodes.nodes ?? 0} / 2 online`;
   }catch(e){
-    document.getElementById('statusValue').textContent = '● API Offline';
-    document.getElementById('statusValue').style.color = '#fb7185';
-    document.getElementById('seedNodeText').textContent = 'Unavailable';
+    document.getElementById('statusValue').textContent = 'API Offline';
+    document.getElementById('statusValue').className = 'live-value status-offline';
+  }
+}
+
+async function loadPool(){
+  try{
+    const res = await fetch(POOL_API);
+    if(!res.ok) throw new Error('Pool API unavailable');
+
+    const data = await res.json();
+
+    document.getElementById('poolValue').textContent = data.online ? 'Online' : 'Offline';
+    document.getElementById('poolValue').className = data.online ? 'live-value status-online' : 'live-value status-offline';
+    document.getElementById('poolFeeText').textContent = `${data.poolFeePercent ?? '-'}%`;
+    document.getElementById('minPayoutText').textContent = `${data.minPayout ?? '-'} TH3`;
+  }catch(e){
+    document.getElementById('poolValue').textContent = 'Unavailable';
+    document.getElementById('poolValue').className = 'live-value status-offline';
+    document.getElementById('poolFeeText').textContent = 'Unavailable';
+    document.getElementById('minPayoutText').textContent = 'Unavailable';
   }
 }
 
@@ -745,12 +796,14 @@ const navLinks = document.getElementById('navLinks');
 
 if(menuToggle && navLinks){
   menuToggle.addEventListener('click', () => {
-    navLinks.classList.toggle('open');
+    const isOpen = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
   navLinks.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
     });
   });
 }
@@ -810,7 +863,9 @@ function draw(){
 
 draw();
 loadNetwork();
+loadPool();
 setInterval(loadNetwork, 15000);
+setInterval(loadPool, 15000);
 
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
