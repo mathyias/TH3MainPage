@@ -3,21 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#030712">
-<title>TH3Chain | Wallet, Explorer, API</title>
+<meta name="theme-color" content="#020617">
+<title>TH3Chain | Wallet Explorer Mining API</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --neon:#00f2ff;
-  --purple:#8b5cf6;
-  --green:#22c55e;
-  --amber:#facc15;
-  --bg:#030712;
-  --panel:rgba(255,255,255,.055);
-  --line:rgba(255,255,255,.10);
-  --muted:#94a3b8;
+  --neon:#5df6ff;
+  --green:#4ade80;
+  --red:#fb7185;
+  --bg:#020617;
+  --panel:rgba(255,255,255,.08);
+  --line:rgba(255,255,255,.12);
+  --muted:rgba(255,255,255,.58);
 }
 
 *{
@@ -31,8 +30,11 @@ html{
 }
 
 body{
-  background:var(--bg);
-  color:white;
+  background:
+    radial-gradient(circle at top left, rgba(93,246,255,.15), transparent 40%),
+    radial-gradient(circle at bottom right, rgba(255,255,255,.08), transparent 40%),
+    linear-gradient(180deg,#0f172a 0%,#020617 100%);
+  color:#fff;
   font-family:'Space Grotesk',sans-serif;
   overflow-x:hidden;
 }
@@ -49,19 +51,18 @@ a{
 
 nav{
   position:fixed;
-  top:0;
-  left:0;
-  width:100%;
+  inset:0 0 auto;
   z-index:999;
-  backdrop-filter:blur(20px);
-  background:rgba(3,7,18,.72);
+  backdrop-filter:blur(26px);
+  -webkit-backdrop-filter:blur(26px);
+  background:rgba(2,6,23,.74);
   border-bottom:1px solid var(--line);
 }
 
 .nav-wrap{
-  max-width:1280px;
+  max-width:1180px;
   margin:auto;
-  padding:14px 24px;
+  padding:14px 22px;
   display:flex;
   justify-content:space-between;
   align-items:center;
@@ -69,15 +70,16 @@ nav{
 }
 
 .logo{
-  width:70px;
-  height:70px;
+  width:58px;
+  height:58px;
   display:flex;
   align-items:center;
   justify-content:center;
   font-weight:900;
-  background:linear-gradient(135deg,var(--neon),var(--purple));
-  clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0% 50%);
-  box-shadow:0 0 25px rgba(0,242,255,.35);
+  color:#04151a;
+  background:linear-gradient(180deg,#7df8ff,#27e8ff);
+  border-radius:18px;
+  box-shadow:0 12px 30px rgba(39,232,255,.22);
 }
 
 .nav-links{
@@ -94,7 +96,7 @@ nav{
   text-decoration:none;
   color:white;
   padding:12px 18px;
-  border-radius:14px;
+  border-radius:16px;
   font-weight:700;
   border:1px solid transparent;
   transition:.2s;
@@ -110,8 +112,9 @@ nav{
 }
 
 .btn-main{
-  background:linear-gradient(90deg,var(--neon),var(--purple));
-  box-shadow:0 0 25px rgba(0,242,255,.25);
+  background:linear-gradient(180deg,#7df8ff,#27e8ff);
+  color:#04151a;
+  box-shadow:0 12px 30px rgba(39,232,255,.22);
 }
 
 .hero{
@@ -121,28 +124,39 @@ nav{
   justify-content:center;
   align-items:center;
   text-align:center;
-  padding:140px 20px 70px;
-  position:relative;
+  padding:132px 20px 70px;
+}
+
+.kicker{
+  letter-spacing:.36em;
+  color:var(--neon);
+  font-size:12px;
+  margin-bottom:18px;
 }
 
 .hero h1{
-  font-size:clamp(4rem,10vw,8rem);
+  font-size:clamp(3.8rem,10vw,8rem);
+  line-height:.95;
   font-weight:900;
-  text-shadow:0 0 25px rgba(0,242,255,.25);
+  letter-spacing:-.04em;
 }
 
 .gradient{
-  background:linear-gradient(90deg,var(--neon),var(--purple));
-  -webkit-background-clip:text;
-  background-clip:text;
-  -webkit-text-fill-color:transparent;
+  color:var(--neon);
+}
+
+.hero h2{
+  margin-top:16px;
+  font-size:clamp(1.8rem,4.8vw,3.5rem);
+  font-weight:900;
+  color:var(--neon);
 }
 
 .hero-copy{
-  max-width:780px;
+  max-width:790px;
   color:var(--muted);
   margin:24px 0 34px;
-  font-size:1.1rem;
+  font-size:1.08rem;
   line-height:1.7;
 }
 
@@ -153,39 +167,35 @@ nav{
   justify-content:center;
 }
 
-.kicker{
-  letter-spacing:.45em;
-  color:var(--neon);
-  font-size:12px;
-  margin-bottom:18px;
-}
-
 .live-strip{
   width:100%;
-  max-width:1000px;
+  max-width:980px;
   display:grid;
   grid-template-columns:repeat(4,1fr);
   gap:14px;
-  margin-top:46px;
+  margin-top:44px;
 }
 
 .live-card,
 .glass{
   background:var(--panel);
-  backdrop-filter:blur(25px);
+  backdrop-filter:blur(40px) saturate(180%);
+  -webkit-backdrop-filter:blur(40px) saturate(180%);
   border:1px solid var(--line);
-  border-radius:22px;
+  box-shadow:0 30px 80px rgba(0,0,0,.32), inset 0 1px 0 rgba(255,255,255,.16);
 }
 
 .live-card{
+  border-radius:22px;
   padding:18px;
   text-align:left;
 }
 
 .live-label{
-  color:rgba(255,255,255,.55);
-  font-size:12px;
+  color:var(--muted);
+  font-size:11px;
   letter-spacing:.12em;
+  text-transform:uppercase;
 }
 
 .live-value{
@@ -193,23 +203,21 @@ nav{
   font-size:22px;
   font-weight:900;
   word-break:break-all;
+  color:var(--neon);
 }
 
-.status-dot{
-  display:inline-flex;
-  align-items:center;
-  gap:8px;
+.status-online{
   color:var(--green);
 }
 
 .section{
-  max-width:1200px;
+  max-width:1180px;
   margin:auto;
-  padding:80px 24px;
+  padding:74px 22px;
 }
 
 .section-head{
-  margin-bottom:26px;
+  margin-bottom:24px;
 }
 
 .section-head h2{
@@ -218,33 +226,40 @@ nav{
 
 .section-head p{
   color:var(--muted);
-  max-width:760px;
+  max-width:780px;
   margin-top:12px;
   line-height:1.7;
 }
 
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
   gap:18px;
 }
 
 .glass{
+  border-radius:28px;
   padding:26px;
   transition:.25s;
 }
 
 .glass:hover{
   transform:translateY(-6px);
-  border-color:rgba(0,242,255,.28);
-  box-shadow:0 20px 50px rgba(0,0,0,.35);
+  border-color:rgba(93,246,255,.28);
 }
 
 .card-num{
-  font-size:34px;
-  font-weight:900;
+  width:44px;
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:14px;
+  background:rgba(93,246,255,.10);
+  border:1px solid rgba(93,246,255,.20);
   color:var(--neon);
-  margin-bottom:10px;
+  font-weight:900;
+  margin-bottom:16px;
 }
 
 .glass h3{
@@ -253,31 +268,39 @@ nav{
 
 .glass p{
   color:var(--muted);
-  line-height:1.6;
+  line-height:1.65;
 }
 
 .stack{
   display:grid;
-  grid-template-columns:1.1fr .9fr;
+  grid-template-columns:1.05fr .95fr;
   gap:18px;
 }
 
 .flow{
   display:grid;
   gap:10px;
+  margin-top:18px;
+}
+
+.flow-step,
+.link-row,
+.node-row{
+  padding:14px 16px;
+  border-radius:16px;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(255,255,255,.08);
 }
 
 .flow-step{
-  padding:14px 16px;
-  border-radius:14px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.08);
   color:#dbeafe;
 }
 
-.link-panel{
+.link-panel,
+.node-panel{
   display:grid;
   gap:12px;
+  margin-top:18px;
 }
 
 .link-row{
@@ -285,16 +308,41 @@ nav{
   justify-content:space-between;
   align-items:center;
   gap:12px;
-  padding:14px 16px;
-  border-radius:14px;
-  background:rgba(255,255,255,.045);
-  border:1px solid rgba(255,255,255,.08);
   text-decoration:none;
 }
 
-.link-row span{
+.link-row span,
+.node-row span{
   color:var(--muted);
   font-size:13px;
+  overflow-wrap:anywhere;
+}
+
+.node-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.badge{
+  padding:6px 10px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:700;
+  white-space:nowrap;
+}
+
+.badge-good{
+  color:var(--green);
+  background:rgba(34,197,94,.12);
+  border:1px solid rgba(34,197,94,.24);
+}
+
+.badge-muted{
+  color:rgba(255,255,255,.68);
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
 }
 
 .code{
@@ -303,9 +351,27 @@ nav{
   word-break:break-all;
 }
 
+.snapshot-table{
+  width:100%;
+  border-collapse:collapse;
+  table-layout:fixed;
+  margin-top:16px;
+}
+
+.snapshot-table td{
+  padding:12px 0;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  vertical-align:top;
+}
+
+.snapshot-table td:first-child{
+  width:150px;
+  color:var(--muted);
+}
+
 footer{
   text-align:center;
-  padding:80px 20px;
+  padding:70px 20px 84px;
   color:#64748b;
 }
 
@@ -334,14 +400,7 @@ footer{
 
   .nav-links{
     justify-content:center;
-  }
-
-  .hero{
-    padding-top:170px;
-  }
-
-  .hero h1{
-    font-size:3.8rem;
+    width:100%;
   }
 
   .btn{
@@ -350,6 +409,25 @@ footer{
 
   .hero-actions{
     width:100%;
+  }
+
+  .hero{
+    padding-top:190px;
+  }
+
+  .hero h1{
+    font-size:3.5rem;
+  }
+
+  .glass{
+    padding:22px;
+    border-radius:24px;
+  }
+
+  .link-row,
+  .node-row{
+    flex-direction:column;
+    align-items:flex-start;
   }
 }
 </style>
@@ -376,14 +454,12 @@ footer{
 
   <h1>TH3CHAIN</h1>
 
-  <h2 class="gradient" style="font-size:clamp(2rem,5vw,4rem);font-weight:900;">
-    SELF-CUSTODY POW NETWORK
-  </h2>
+  <h2>Wallet. Explorer. Mining. API.</h2>
 
   <p class="hero-copy">
-    TH3Chain is a Ravencoin-based Proof-of-Work UTXO chain with a live explorer,
-    public API, and browser wallet. TH3 Wallet builds and signs transactions locally,
-    then broadcasts signed raw transactions through the TH3 API.
+    TH3Chain is a Ravencoin-based Proof-of-Work UTXO network with a self-custody browser wallet,
+    live explorer, public API, mining support, AWS and Oracle seed nodes.
+    TH3 Wallet builds and signs transactions locally, then broadcasts signed raw transactions through the TH3 API.
   </p>
 
   <div class="hero-actions">
@@ -394,22 +470,22 @@ footer{
 
   <div class="live-strip" id="network">
     <div class="live-card">
-      <div class="live-label">STATUS</div>
-      <div class="live-value status-dot" id="statusValue">● Loading</div>
+      <div class="live-label">Status</div>
+      <div class="live-value status-online" id="statusValue">● Loading</div>
     </div>
 
     <div class="live-card">
-      <div class="live-label">HEIGHT</div>
+      <div class="live-label">Height</div>
       <div class="live-value" id="heightValue">-</div>
     </div>
 
     <div class="live-card">
-      <div class="live-label">NODES</div>
-      <div class="live-value" id="peersValue">-</div>
+      <div class="live-label">Seed Nodes</div>
+      <div class="live-value" id="nodesValue">-</div>
     </div>
 
     <div class="live-card">
-      <div class="live-label">HASHRATE</div>
+      <div class="live-label">Hashrate</div>
       <div class="live-value" id="hashrateValue">-</div>
     </div>
   </div>
@@ -417,10 +493,10 @@ footer{
 
 <section class="section reveal">
   <div class="section-head">
-    <h2>What Works Now</h2>
+    <h2>Live TH3 Stack</h2>
     <p>
-      The core user flow is live: create or import a seed phrase, generate a TH3 address,
-      receive UTXO, sign locally, broadcast, and inspect the confirmed transaction in Explorer.
+      The core chain stack is already connected: wallet, explorer, API, mining, internal pool,
+      UTXO history, broadcast endpoint and seed infrastructure.
     </p>
   </div>
 
@@ -428,25 +504,37 @@ footer{
     <div class="glass">
       <div class="card-num">01</div>
       <h3>TH3 Wallet</h3>
-      <p>Seed phrase wallet with password lock, import, QR code, balance, history, send UI, and auto refresh.</p>
+      <p>Seed phrase wallet with import, password lock, QR code, balance, history, send UI, fee display and auto refresh.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">02</div>
-      <h3>Local Signing</h3>
-      <p>Transactions are built from UTXO and signed inside the wallet. The seed and private key never go to the API.</p>
+      <h3>Self-Custody Send</h3>
+      <p>Transactions are built from UTXO and signed locally. Seed and private key never leave the wallet.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">03</div>
-      <h3>Explorer</h3>
-      <p>Blocks, addresses, UTXO and transaction details are visible through the public explorer.</p>
+      <h3>TH3 Explorer</h3>
+      <p>Blocks, addresses, UTXO, mining rewards and transaction details are readable through the public explorer.</p>
     </div>
 
     <div class="glass">
       <div class="card-num">04</div>
-      <h3>Broadcast API</h3>
-      <p>The API exposes network status, balances, history, UTXO and signed raw transaction broadcast.</p>
+      <h3>Mining Support</h3>
+      <p>Mining rewards are tracked in wallet history, including immature rewards before they reach spendable maturity.</p>
+    </div>
+
+    <div class="glass">
+      <div class="card-num">05</div>
+      <h3>Public API</h3>
+      <p>API exposes network status, balances, rich history, UTXO, transaction lookup and signed raw transaction broadcast.</p>
+    </div>
+
+    <div class="glass">
+      <div class="card-num">06</div>
+      <h3>Private Pool Ready</h3>
+      <p>TH3 pool infrastructure is online for internal testing. Rigel miner has been tested against the pool successfully.</p>
     </div>
   </div>
 </section>
@@ -455,8 +543,8 @@ footer{
   <div class="stack">
     <div class="glass">
       <h2 class="gradient">Wallet Transaction Flow</h2>
-      <p style="margin:14px 0 20px;color:var(--muted);line-height:1.7;">
-        This is the transaction path currently working on TH3 Wallet.
+      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
+        This is the working transaction path in TH3 Wallet.
       </p>
 
       <div class="flow">
@@ -466,15 +554,15 @@ footer{
         <div class="flow-step">UTXO Selection</div>
         <div class="flow-step">Raw Transaction</div>
         <div class="flow-step">Local Signature</div>
-        <div class="flow-step">Broadcast</div>
+        <div class="flow-step">Broadcast API</div>
         <div class="flow-step">Explorer Confirmation</div>
       </div>
     </div>
 
     <div class="glass">
       <h2>Network Links</h2>
-      <p style="margin:14px 0 20px;color:var(--muted);line-height:1.7;">
-        Open the live tools and infrastructure.
+      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
+        Open the public live tools.
       </p>
 
       <div class="link-panel">
@@ -503,24 +591,81 @@ footer{
 </section>
 
 <section class="section reveal">
+  <div class="stack">
+    <div class="glass">
+      <h2>Mining And Maturity</h2>
+      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
+        TH3Chain is mineable Proof-of-Work. Coinbase rewards appear in wallet history as mining rewards.
+        Fresh mining rewards are marked as immature until they reach spendable maturity.
+      </p>
+
+      <div class="flow">
+        <div class="flow-step">Mine block</div>
+        <div class="flow-step">Coinbase reward appears in wallet history</div>
+        <div class="flow-step">Immature reward waits for confirmations</div>
+        <div class="flow-step">Mature reward becomes spendable UTXO</div>
+      </div>
+    </div>
+
+    <div class="glass">
+      <h2>Pool And Seed Infrastructure</h2>
+      <p style="margin-top:12px;color:var(--muted);line-height:1.7;">
+        TH3 pool and seed infrastructure is online. Pool access is not published yet while internal mining tests continue.
+      </p>
+
+      <div class="node-panel">
+        <div class="node-row">
+          <strong>seed.th3chain.cloud</strong>
+          <span class="badge badge-good">AWS seed</span>
+        </div>
+
+        <div class="node-row">
+          <strong>seed2.th3chain.cloud</strong>
+          <span class="badge badge-good">Oracle seed</span>
+        </div>
+
+        <div class="node-row">
+          <strong>pool.th3chain.cloud</strong>
+          <span class="badge badge-muted">Private pool</span>
+        </div>
+
+        <div class="node-row">
+          <strong>Rigel miner</strong>
+          <span class="badge badge-good">Tested</span>
+        </div>
+
+        <div class="node-row">
+          <strong>Live reachable seeds</strong>
+          <span id="seedNodeText">Checking...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
   <div class="glass">
     <h2>Live Chain Snapshot</h2>
-    <p style="margin:14px 0 18px;color:var(--muted);">
+    <p style="margin-top:12px;color:var(--muted);">
       Pulled directly from the TH3 public API.
     </p>
 
-    <table style="width:100%;border-collapse:collapse;table-layout:fixed;">
+    <table class="snapshot-table">
       <tr>
-        <td style="padding:12px 0;color:var(--muted);width:160px;">Best Block</td>
+        <td>Best Block</td>
         <td class="code" id="bestblockValue">-</td>
       </tr>
       <tr>
-        <td style="padding:12px 0;color:var(--muted);">Difficulty</td>
+        <td>Difficulty</td>
         <td class="code" id="difficultyValue">-</td>
       </tr>
       <tr>
-        <td style="padding:12px 0;color:var(--muted);">Version</td>
+        <td>Version</td>
         <td class="code" id="versionValue">-</td>
+      </tr>
+      <tr>
+        <td>Peers</td>
+        <td class="code" id="peersValue">-</td>
       </tr>
     </table>
   </div>
@@ -528,32 +673,38 @@ footer{
 
 <footer>
   <h2 class="gradient">TH3CHAIN</h2>
-  <p>Proof-of-Work • Self-Custody Wallet • Explorer • Public API</p>
+  <p>Proof-of-Work | Self-Custody Wallet | Explorer | Mining | Public API</p>
 </footer>
 
 <script>
-const API = 'https://api.th3chain.cloud/api/network';
+const NETWORK_API = 'https://api.th3chain.cloud/api/network';
+const NODES_API = 'https://api.th3chain.cloud/api/nodes';
 
 async function loadNetwork(){
   try{
-    const res = await fetch(API);
-    const data = await res.json();
+    const [networkRes, nodesRes] = await Promise.all([
+      fetch(NETWORK_API),
+      fetch(NODES_API)
+    ]);
+
+    const data = await networkRes.json();
+    const nodes = await nodesRes.json();
 
     document.getElementById('statusValue').textContent = '● Online';
+    document.getElementById('statusValue').className = 'live-value status-online';
     document.getElementById('heightValue').textContent = data.height ?? '-';
-    const nodes = await fetch(
-  'https://api.th3chain.cloud/api/nodes'
-).then(r => r.json());
-
-document.getElementById('peersValue').textContent =
-  nodes.nodes ?? '-';
+    document.getElementById('nodesValue').textContent = nodes.nodes ?? '-';
     document.getElementById('hashrateValue').textContent = Number(data.hashrate || 0).toExponential(2);
+
     document.getElementById('bestblockValue').textContent = data.bestblock || '-';
     document.getElementById('difficultyValue').textContent = data.difficulty ?? '-';
     document.getElementById('versionValue').textContent = data.version || '-';
+    document.getElementById('peersValue').textContent = data.peers ?? '-';
+    document.getElementById('seedNodeText').textContent = `${nodes.nodes ?? 0} / 2 online`;
   }catch(e){
     document.getElementById('statusValue').textContent = '● API Offline';
-    document.getElementById('statusValue').style.color = '#f87171';
+    document.getElementById('statusValue').style.color = '#fb7185';
+    document.getElementById('seedNodeText').textContent = 'Unavailable';
   }
 }
 
@@ -568,11 +719,11 @@ function resize(){
 resize();
 addEventListener('resize', resize);
 
-const pts = [...Array(120)].map(() => ({
+const pts = [...Array(90)].map(() => ({
   x: Math.random() * innerWidth,
   y: Math.random() * innerHeight,
-  vx: (Math.random() - .5) * .2,
-  vy: (Math.random() - .5) * .2
+  vx: (Math.random() - .5) * .18,
+  vy: (Math.random() - .5) * .18
 }));
 
 function draw(){
@@ -586,8 +737,8 @@ function draw(){
     if(p.y < 0 || p.y > c.height) p.vy *= -1;
 
     x.beginPath();
-    x.arc(p.x, p.y, 1.5, 0, 7);
-    x.fillStyle = 'rgba(255,255,255,.72)';
+    x.arc(p.x, p.y, 1.4, 0, Math.PI * 2);
+    x.fillStyle = 'rgba(255,255,255,.65)';
     x.fill();
   }
 
@@ -598,7 +749,7 @@ function draw(){
       const d = Math.hypot(dx, dy);
 
       if(d < 120){
-        x.strokeStyle = 'rgba(0,242,255,' + (1 - d / 120) * 0.14 + ')';
+        x.strokeStyle = 'rgba(93,246,255,' + (1 - d / 120) * 0.13 + ')';
         x.beginPath();
         x.moveTo(pts[i].x, pts[i].y);
         x.lineTo(pts[j].x, pts[j].y);
