@@ -25,4 +25,4 @@ https://th3chain.cloud
 
 ## Repository
 
-This is a static HTML/CSS/JS frontend deployed through Cloudflare Pages.
+Static HTML/CSS/JS frontend deployed through Cloudflare Pages.
