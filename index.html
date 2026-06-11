@@ -478,20 +478,38 @@ footer{
   }
 }
 
-.logo-mark {
-  width: 52px;
-  height: 52px;
-  padding: 0;
-  display: inline-grid;
-  place-items: center;
-  overflow: hidden;
+
+.nav-logo{
+  width:76px;
+  height:76px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  text-decoration:none;
+  background:transparent;
+  border:0;
+  box-shadow:none;
 }
 
-.logo-mark img {
-  width: 42px;
-  height: 42px;
-  display: block;
-  object-fit: contain;
+.nav-logo img{
+  width:70px;
+  height:70px;
+  display:block;
+  object-fit:contain;
+  filter:drop-shadow(0 10px 24px rgba(39,232,255,.22));
+}
+
+@media(max-width:720px){
+  .nav-logo{
+    width:62px;
+    height:62px;
+  }
+
+  .nav-logo img{
+    width:58px;
+    height:58px;
+  }
 }
 
 </style>
@@ -510,7 +528,7 @@ footer{
 
 <nav>
   <div class="nav-wrap">
-    <div class="logo logo-mark"><img src="/assets/th3-logo.png" alt="TH3Chain"></div>
+    <a class="nav-logo" href="/" aria-label="TH3Chain home"><img src="/assets/th3-logo.png" alt="TH3Chain"></a>
 
     <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false">
       Menu
