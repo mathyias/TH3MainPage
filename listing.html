@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#020617">
+<title>TH3Chain Listing Information</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:title" content="TH3Chain Listing Information">
+<meta property="og:image" content="https://th3chain.cloud/assets/th3-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TH3Chain Listing Information">
+<meta name="twitter:image" content="https://th3chain.cloud/assets/th3-logo.png">
+<style>
+:root{
+  --bg:#020617;
+  --panel:#17233c;
+  --panel2:#10192d;
+  --text:#f8fafc;
+  --muted:#9ca3af;
+  --cyan:#4eeaff;
+  --line:rgba(255,255,255,.12);
+  --green:#4ade80;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;
+  background:
+    radial-gradient(circle at top left,rgba(78,234,255,.15),transparent 34rem),
+    linear-gradient(135deg,#102437,#071022 55%,#050816);
+  color:var(--text);
+}
+a{color:inherit}
+.wrap{
+  width:min(1120px,calc(100% - 36px));
+  margin:0 auto;
+  padding:32px 0 72px;
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  margin-bottom:64px;
+}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+  font-weight:900;
+}
+.logo img{
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  filter:drop-shadow(0 10px 24px rgba(39,232,255,.24));
+}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:46px;
+  padding:0 18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.06);
+  text-decoration:none;
+  font-weight:800;
+}
+.btn-main{
+  background:linear-gradient(180deg,#7df8ff,#27e8ff);
+  color:#03131a;
+  border:0;
+}
+.hero{
+  text-align:center;
+  margin-bottom:42px;
+}
+.kicker{
+  color:var(--cyan);
+  letter-spacing:.42em;
+  font-size:13px;
+  font-weight:900;
+}
+h1{
+  margin:18px 0 12px;
+  font-size:clamp(44px,8vw,92px);
+  line-height:.96;
+}
+.hero p{
+  margin:0 auto;
+  max-width:780px;
+  color:var(--muted);
+  font-size:18px;
+  line-height:1.7;
+}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
+}
+.card{
+  background:linear-gradient(145deg,rgba(31,49,82,.94),rgba(21,31,55,.94));
+  border:1px solid rgba(148,163,184,.22);
+  border-radius:24px;
+  padding:26px;
+  box-shadow:0 24px 80px rgba(0,0,0,.24);
+}
+.card.full{grid-column:1/-1}
+h2{
+  margin:0 0 18px;
+  font-size:24px;
+}
+.rows{
+  display:grid;
+  gap:10px;
+}
+.row{
+  display:grid;
+  grid-template-columns:180px 1fr;
+  gap:16px;
+  padding:13px 14px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:rgba(255,255,255,.045);
+}
+.row span:first-child{
+  color:var(--muted);
+  font-weight:800;
+}
+.row span:last-child{
+  overflow-wrap:anywhere;
+}
+.status{
+  color:var(--green);
+  font-weight:900;
+}
+.code{
+  font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+  color:var(--cyan);
+}
+.assets{
+  display:flex;
+  align-items:center;
+  gap:22px;
+  flex-wrap:wrap;
+}
+.assets img{
+  width:124px;
+  height:124px;
+  object-fit:contain;
+}
+.actions{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:22px;
+}
+@media(max-width:760px){
+  .grid{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr}
+  .nav{align-items:flex-start}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="nav">
+    <a class="logo" href="/">
+      <img src="/assets/th3-logo.png" alt="TH3Chain">
+      <span>TH3Chain</span>
+    </a>
+    <a class="btn" href="/">Back to Home</a>
+  </div>
+
+  <section class="hero">
+    <div class="kicker">LISTING INFORMATION</div>
+    <h1>TH3Chain</h1>
+    <p>
+      Public listing information, technical details, official links and brand assets
+      for TH3, an independent KAWPOW Proof-of-Work cryptocurrency.
+    </p>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <h2>Basic Information</h2>
+      <div class="rows">
+        <div class="row"><span>Project name</span><span>TH3Chain</span></div>
+        <div class="row"><span>Ticker</span><span>TH3</span></div>
+        <div class="row"><span>Coin type</span><span>Native coin</span></div>
+        <div class="row"><span>Chain type</span><span>Independent Proof-of-Work blockchain</span></div>
+        <div class="row"><span>Algorithm</span><span>KAWPOW</span></div>
+        <div class="row"><span>Address prefix</span><span>TH3</span></div>
+        <div class="row"><span>Block reward</span><span>2137 TH3</span></div>
+        <div class="row"><span>Status</span><span class="status">Live</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Official Links</h2>
+      <div class="rows">
+        <div class="row"><span>Website</span><span><a href="https://th3chain.cloud">th3chain.cloud</a></span></div>
+        <div class="row"><span>Wallet</span><span><a href="https://wallet.th3chain.cloud">wallet.th3chain.cloud</a></span></div>
+        <div class="row"><span>Explorer</span><span><a href="https://explorer.th3chain.cloud">explorer.th3chain.cloud</a></span></div>
+        <div class="row"><span>Mining Pool</span><span><a href="https://pool.th3chain.cloud">pool.th3chain.cloud</a></span></div>
+        <div class="row"><span>API</span><span><a href="https://api.th3chain.cloud/api/network">api.th3chain.cloud/api/network</a></span></div>
+        <div class="row"><span>GitHub Core</span><span><a href="https://github.com/mathyias/TH3Coin">github.com/mathyias/TH3Coin</a></span></div>
+      </div>
+    </div>
+
+    <div class="card full">
+      <h2>Technical Details</h2>
+      <div class="rows">
+        <div class="row"><span>Genesis hash</span><span class="code">000003b6945e94235f0cc6e81af307a09f4b7354df86cd58b5afde06fb3c1012</span></div>
+        <div class="row"><span>Address format</span><span class="code">TH3...</span></div>
+        <div class="row"><span>Mining endpoint</span><span class="code">stratum+tcp://pool.th3chain.cloud:3333</span></div>
+        <div class="row"><span>Public mining</span><span class="status">Open</span></div>
+        <div class="row"><span>Pool payouts</span><span class="status">Active</span></div>
+      </div>
+    </div>
+
+    <div class="card full">
+      <h2>Brand Assets</h2>
+      <div class="assets">
+        <img src="/brand/th3-logo-512.png" alt="TH3 logo">
+        <div>
+          <p>Transparent PNG logo assets for listings, social profiles and exchanges.</p>
+          <div class="actions">
+            <a class="btn btn-main" href="/brand/th3-logo-512.png" download>Download 512 PNG</a>
+            <a class="btn" href="/brand/th3-logo-256.png" download>Download 256 PNG</a>
+            <a class="btn" href="/brand/listing-info.md">Markdown Info</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+</body>
+</html>
