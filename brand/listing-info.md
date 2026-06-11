@@ -20,7 +20,7 @@ Website: https://th3chain.cloud
 Wallet: https://wallet.th3chain.cloud  
 Explorer: https://explorer.th3chain.cloud  
 Mining Pool: https://pool.th3chain.cloud  
-API: https://api.th3chain.cloud/api/network  
+API: https://api.th3chain.cloud  
 GitHub Core: https://github.com/mathyias/TH3Coin  
 
 ## Technical Details
