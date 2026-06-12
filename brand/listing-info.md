@@ -28,6 +28,7 @@ Mining Pool: https://pool.th3chain.cloud
 API: https://api.th3chain.cloud  
 GitHub Core: https://github.com/mathyias/TH3Coin  
 Telegram: https://t.me/TH3ChainCloud  
+X / Twitter: https://x.com/TH3ChainCloud  
 
 ## Technical Details
 
