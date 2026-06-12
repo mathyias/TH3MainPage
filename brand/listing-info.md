@@ -16,6 +16,11 @@ Pool payouts: Active
 
 ## Official Links
 
+Contact Email: contact@th3chain.cloud  
+Listing Email: listing@th3chain.cloud  
+Support Email: support@th3chain.cloud  
+
+
 Website: https://th3chain.cloud  
 Wallet: https://wallet.th3chain.cloud  
 Explorer: https://explorer.th3chain.cloud  

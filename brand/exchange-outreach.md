@@ -30,6 +30,7 @@ Please let me know your listing requirements, technical integration process, and
 
 Best regards,
 TH3Chain
+listing@th3chain.cloud
 
 ## Technical Follow-up Message
 
