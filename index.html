@@ -512,6 +512,104 @@ footer{
   }
 }
 
+
+.official-footer {
+  width: min(1120px, calc(100% - 36px));
+  margin: 72px auto 36px;
+  padding: 28px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 28px;
+  background: rgba(15, 23, 42, .72);
+  box-shadow: 0 24px 80px rgba(0,0,0,.28);
+}
+
+.official-footer-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 20px;
+}
+
+.official-footer h2 {
+  margin: 0;
+  font-size: clamp(24px, 3vw, 36px);
+  color: #f8fafc;
+}
+
+.official-footer p {
+  margin: 6px 0 0;
+  color: #9ca3af;
+  line-height: 1.6;
+}
+
+.official-links-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.official-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 58px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 18px;
+  background: rgba(30, 41, 59, .72);
+  color: #f8fafc;
+  text-decoration: none;
+  font-weight: 800;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.official-link:hover {
+  transform: translateY(-2px);
+  border-color: rgba(78,234,255,.42);
+  background: rgba(30, 64, 88, .82);
+}
+
+.official-icon {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: #4eeaff;
+  color: #020617;
+  font-size: 13px;
+  font-weight: 950;
+}
+
+@media (max-width: 980px) {
+  .official-links-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .official-footer-head {
+    display: block;
+  }
+}
+
+@media (max-width: 560px) {
+  .official-footer {
+    width: min(100% - 24px, 1120px);
+    margin: 48px auto 24px;
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .official-links-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .official-link {
+    min-height: 54px;
+  }
+}
+
 </style>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -855,6 +953,53 @@ footer{
   <h2 class="gradient">TH3CHAIN</h2>
   <p>Live Proof-of-Work Network | TH3 Wallet | Explorer | KAWPOW Mining | Public API</p>
 </footer>
+
+
+<section class="official-footer" id="official-links">
+  <div class="official-footer-head">
+    <div>
+      <h2>Official TH3Chain Links</h2>
+      <p>Wallet, explorer, mining pool, API and community channels.</p>
+    </div>
+  </div>
+
+  <div class="official-links-grid">
+    <a class="official-link" href="https://wallet.th3chain.cloud" target="_blank" rel="noreferrer">
+      <span class="official-icon">W</span>
+      <span>Wallet</span>
+    </a>
+
+    <a class="official-link" href="https://explorer.th3chain.cloud" target="_blank" rel="noreferrer">
+      <span class="official-icon">EX</span>
+      <span>Explorer</span>
+    </a>
+
+    <a class="official-link" href="https://pool.th3chain.cloud" target="_blank" rel="noreferrer">
+      <span class="official-icon">M</span>
+      <span>Mining</span>
+    </a>
+
+    <a class="official-link" href="https://api.th3chain.cloud" target="_blank" rel="noreferrer">
+      <span class="official-icon">API</span>
+      <span>API</span>
+    </a>
+
+    <a class="official-link" href="https://x.com/TH3ChainCloud" target="_blank" rel="noreferrer">
+      <span class="official-icon">X</span>
+      <span>X / Twitter</span>
+    </a>
+
+    <a class="official-link" href="https://t.me/TH3ChainCloud" target="_blank" rel="noreferrer">
+      <span class="official-icon">TG</span>
+      <span>Telegram</span>
+    </a>
+
+    <a class="official-link" href="mailto:contact@th3chain.cloud">
+      <span class="official-icon">@</span>
+      <span>Contact</span>
+    </a>
+  </div>
+</section>
 
 <script>
 const NETWORK_API = 'https://api.th3chain.cloud/api/network';
