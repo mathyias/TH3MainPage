@@ -26,6 +26,10 @@ Wallet: https://wallet.th3chain.cloud
 Explorer: https://explorer.th3chain.cloud  
 Mining Pool: https://pool.th3chain.cloud  
 API: https://api.th3chain.cloud  
+Supply API: https://api.th3chain.cloud/api/supply  
+Circulating Supply API: https://api.th3chain.cloud/api/supply/circulating  
+Total Supply API: https://api.th3chain.cloud/api/supply/total  
+Max Supply API: https://api.th3chain.cloud/api/supply/max  
 GitHub Core: https://github.com/mathyias/TH3Coin  
 Telegram: https://t.me/TH3ChainCloud  
 X / Twitter: https://x.com/TH3ChainCloud  
