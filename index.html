@@ -570,6 +570,58 @@ footer{
   }
 }
 
+
+.listed-strip {
+  width: min(980px, calc(100% - 36px));
+  margin: 22px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.listed-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(78, 234, 255, .18);
+  border-radius: 18px;
+  background: rgba(23, 35, 60, .72);
+  text-decoration: none;
+}
+
+.listed-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 14px;
+  background: rgba(78, 234, 255, .13);
+  border: 1px solid rgba(78, 234, 255, .22);
+  color: #4eeaff;
+  font-weight: 900;
+}
+
+.listed-title {
+  display: block;
+  color: #f8fafc;
+  font-weight: 800;
+}
+
+.listed-text {
+  display: block;
+  margin-top: 3px;
+  color: rgba(226, 232, 240, .72);
+  font-size: 13px;
+}
+
+@media (max-width: 720px) {
+  .listed-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
 </style>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -1053,6 +1105,26 @@ const io = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+
+
+<section class="listed-strip" aria-label="TH3Chain public listings">
+  <a class="listed-card" href="https://coinranking.com/coin/jFx1j88Fo+th3chain-th3" target="_blank" rel="noreferrer">
+    <span class="listed-icon">CR</span>
+    <span>
+      <span class="listed-title">Listed on Coinranking</span>
+      <span class="listed-text">TH3Chain profile is live with supply and project details.</span>
+    </span>
+  </a>
+
+  <a class="listed-card" href="https://chromewebstore.google.com/detail/th3-wallet/kngpfocihoddeicehgikkgjbpkfnpial" target="_blank" rel="noreferrer">
+    <span class="listed-icon">CW</span>
+    <span>
+      <span class="listed-title">Chrome Wallet Extension</span>
+      <span class="listed-text">TH3 Wallet is published in the Chrome Web Store.</span>
+    </span>
+  </a>
+</section>
+
 
 </body>
 </html>
