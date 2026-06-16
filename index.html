@@ -713,121 +713,6 @@ footer{
 }
 
 
-/* TH3 listing news ticker */
-.news-ticker {
-  width: 100%;
-  overflow: hidden;
-  border-bottom: 1px solid rgba(78, 234, 255, 0.18);
-  background: rgba(2, 6, 23, 0.92);
-}
-
-.news-ticker-track {
-  display: flex;
-  width: max-content;
-  animation: th3-news-scroll 24s linear infinite;
-}
-
-.news-ticker-inner {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 10px 18px;
-}
-
-.news-ticker a {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: #f8fafc;
-  text-decoration: none;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.news-ticker strong {
-  color: #4eeaff;
-}
-
-.news-ticker svg {
-  width: 22px;
-  height: 22px;
-  flex: 0 0 auto;
-}
-
-@keyframes th3-news-scroll {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-@media (max-width: 640px) {
-  .news-ticker-inner {
-    gap: 14px;
-    padding: 9px 14px;
-  }
-
-  .news-ticker a {
-    font-size: 13px;
-  }
-}
-
-
-/* TH3_TOP_NEWS_START */
-.top-news-ticker {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: auto;
-  width: 100vw;
-  height: 34px;
-  margin: 0;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid rgba(78, 234, 255, .2);
-  background: #050b1a;
-  color: #d9faff;
-  z-index: 99999;
-  font-size: 13px;
-  font-weight: 850;
-  white-space: nowrap;
-}
-
-.top-news-track {
-  display: flex;
-  align-items: center;
-  gap: 34px;
-  min-width: max-content;
-  padding-left: 100vw;
-  animation: th3NewsTicker 34s linear infinite;
-  will-change: transform;
-}
-
-.top-news-track span{
-  display:inline-flex;
-  align-items:center;
-}
-
-.top-news-track span::before{
-  content:"";
-  width:7px;
-  height:7px;
-  margin-right:12px;
-  border-radius:999px;
-  background:#4eeaff;
-  box-shadow:0 0 14px rgba(78,234,255,.85);
-}
-
-@keyframes th3NewsTicker {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
-}
-
-@media (prefers-reduced-motion: reduce){
-  .top-news-track{animation:none}
-}
-/* TH3_TOP_NEWS_END */
-
-
 /* TH3_TICKER_LISTED_CSS_START */
 .news-ticker {
   display: none !important;
@@ -862,15 +747,23 @@ nav {
 .top-news-track {
   display: flex;
   align-items: center;
-  gap: 34px;
-  min-width: max-content;
-  animation: th3NewsTicker 28s linear infinite;
+  width: max-content;
+  animation: th3NewsTicker 42s linear infinite;
   will-change: transform;
+}
+
+.top-news-group {
+  display: flex;
+  align-items: center;
+  gap: 34px;
+  padding-right: 34px;
+  flex: 0 0 auto;
 }
 
 .top-news-track span {
   display: inline-flex;
   align-items: center;
+  flex: 0 0 auto;
 }
 
 .top-news-track span::before {
@@ -967,8 +860,12 @@ nav {
   }
 
   .top-news-track {
+    animation-duration: 34s;
+  }
+
+  .top-news-group {
     gap: 26px;
-    animation-duration: 24s;
+    padding-right: 26px;
   }
 
   .listed-strip {
@@ -1016,33 +913,37 @@ nav {
 <!-- TH3_NEWS_TICKER_END -->
 
 
-<!-- TH3_TOP_NEWS_START -->
-<div class="top-news-ticker" aria-label="TH3Chain news">
-  <div class="top-news-track">
-    <span>TH3Chain is listed on Coinranking</span>
-    <span>TH3 Wallet is live on Chrome Web Store</span>
-    <span>Public KAWPOW mining is open</span>
-    <span>Explorer, API and mining pool are online</span>
-    <span>TH3Chain is listed on Coinranking</span>
-    <span>TH3 Wallet is live on Chrome Web Store</span>
-    <span>Public KAWPOW mining is open</span>
-    <span>Explorer, API and mining pool are online</span>
-  </div>
-</div>
-<!-- TH3_TOP_NEWS_END -->
-
-
 <!-- TH3_TOP_NEWS_HTML_START -->
 <div class="top-news-ticker" aria-label="TH3Chain live updates">
   <div class="top-news-track">
-    <span>TH3Chain is listed on Coinranking</span>
-    <span>TH3 Wallet is live on Chrome Web Store</span>
-    <span>Public KAWPOW mining is open</span>
-    <span>Explorer, API and mining pool are online</span>
-    <span>TH3Chain is listed on Coinranking</span>
-    <span>TH3 Wallet is live on Chrome Web Store</span>
-    <span>Public KAWPOW mining is open</span>
-    <span>Explorer, API and mining pool are online</span>
+    <div class="top-news-group">
+      <span>TH3Chain is listed on Coinranking</span>
+      <span>TH3 Wallet is live on Chrome Web Store</span>
+      <span>Public KAWPOW mining is open</span>
+      <span>Explorer, API and mining pool are online</span>
+      <span>TH3Chain is listed on Coinranking</span>
+      <span>TH3 Wallet is live on Chrome Web Store</span>
+      <span>Public KAWPOW mining is open</span>
+      <span>Explorer, API and mining pool are online</span>
+      <span>TH3Chain is listed on Coinranking</span>
+      <span>TH3 Wallet is live on Chrome Web Store</span>
+      <span>Public KAWPOW mining is open</span>
+      <span>Explorer, API and mining pool are online</span>
+    </div>
+    <div class="top-news-group" aria-hidden="true">
+      <span>TH3Chain is listed on Coinranking</span>
+      <span>TH3 Wallet is live on Chrome Web Store</span>
+      <span>Public KAWPOW mining is open</span>
+      <span>Explorer, API and mining pool are online</span>
+      <span>TH3Chain is listed on Coinranking</span>
+      <span>TH3 Wallet is live on Chrome Web Store</span>
+      <span>Public KAWPOW mining is open</span>
+      <span>Explorer, API and mining pool are online</span>
+      <span>TH3Chain is listed on Coinranking</span>
+      <span>TH3 Wallet is live on Chrome Web Store</span>
+      <span>Public KAWPOW mining is open</span>
+      <span>Explorer, API and mining pool are online</span>
+    </div>
   </div>
 </div>
 <!-- TH3_TOP_NEWS_HTML_END -->
@@ -1064,28 +965,6 @@ nav {
     </div>
   </div>
 </nav>
-
-<div class="listing-marquee" aria-label="TH3Chain public listings">
-  <div class="listing-track">
-    <a class="listing-item" href="https://coinranking.com/coin/jFx1j88Fo+th3chain-th3" target="_blank" rel="noreferrer">
-      <span class="listing-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="17" width="21" height="10" rx="5" fill="#16c784" transform="rotate(-45 13.5 22)"/><rect x="10" y="5" width="19" height="10" rx="5" fill="#6ee7b7" transform="rotate(-45 19.5 10)"/></svg></span>
-      <span><strong>Listed on Coinranking</strong><em>TH3Chain profile is live</em></span>
-    </a>
-    <a class="listing-item" href="https://chromewebstore.google.com/detail/th3-wallet/kngpfocihoddeicehgikkgjbpkfnpial" target="_blank" rel="noreferrer">
-      <span class="listing-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#4285f4"/><path d="M16 16L7 16A14 14 0 0 1 29 11Z" fill="#fbbc05"/><path d="M16 16L11 25A14 14 0 0 1 7 16Z" fill="#34a853"/><path d="M16 16L29 11A14 14 0 0 1 11 25Z" fill="#ea4335"/><circle cx="16" cy="16" r="6" fill="#fff"/><circle cx="16" cy="16" r="4" fill="#38bdf8"/></svg></span>
-      <span><strong>TH3 Wallet on Chrome Web Store</strong><em>Install the browser extension</em></span>
-    </a>
-    <a class="listing-item" href="https://coinranking.com/coin/jFx1j88Fo+th3chain-th3" target="_blank" rel="noreferrer">
-      <span class="listing-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="17" width="21" height="10" rx="5" fill="#16c784" transform="rotate(-45 13.5 22)"/><rect x="10" y="5" width="19" height="10" rx="5" fill="#6ee7b7" transform="rotate(-45 19.5 10)"/></svg></span>
-      <span><strong>Listed on Coinranking</strong><em>TH3Chain profile is live</em></span>
-    </a>
-    <a class="listing-item" href="https://chromewebstore.google.com/detail/th3-wallet/kngpfocihoddeicehgikkgjbpkfnpial" target="_blank" rel="noreferrer">
-      <span class="listing-icon"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14" fill="#4285f4"/><path d="M16 16L7 16A14 14 0 0 1 29 11Z" fill="#fbbc05"/><path d="M16 16L11 25A14 14 0 0 1 7 16Z" fill="#34a853"/><path d="M16 16L29 11A14 14 0 0 1 11 25Z" fill="#ea4335"/><circle cx="16" cy="16" r="6" fill="#fff"/><circle cx="16" cy="16" r="4" fill="#38bdf8"/></svg></span>
-      <span><strong>TH3 Wallet on Chrome Web Store</strong><em>Install the browser extension</em></span>
-    </a>
-  </div>
-</div>
-
 
 <section class="hero">
   <div class="kicker">EARLY LAUNCH PHASE</div>
