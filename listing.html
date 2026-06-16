@@ -46,6 +46,13 @@ a{color:inherit}
   gap:16px;
   margin-bottom:64px;
 }
+.nav-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
 .logo{
   display:flex;
   align-items:center;
@@ -163,19 +170,24 @@ h2{
 @media(max-width:760px){
   .grid{grid-template-columns:1fr}
   .row{grid-template-columns:1fr}
-  .nav{align-items:flex-start}
+  .nav{align-items:flex-start;flex-direction:column}
+  .nav-actions{justify-content:flex-start;width:100%}
 }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="nav">
+  <nav class="nav">
     <a class="logo" href="/">
       <img src="/assets/th3-logo.png" alt="TH3Chain">
       <span>TH3Chain</span>
     </a>
-    <a class="btn" href="/">Back to Home</a>
-  </div>
+    <div class="nav-actions">
+      <a class="btn" href="/">Home</a>
+      <a class="btn" href="/whitepaper.html">Whitepaper</a>
+      <a class="btn" href="/privacy.html">Privacy</a>
+    </div>
+  </nav>
 
   <section class="hero">
     <div class="kicker">LISTING INFORMATION</div>

@@ -44,6 +44,13 @@ a{color:inherit}
   gap:18px;
   margin-bottom:58px;
 }
+.nav-actions{
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
 .brand{
   display:flex;
   align-items:center;
@@ -55,6 +62,7 @@ a{color:inherit}
   width:54px;
   height:54px;
   object-fit:contain;
+  filter:drop-shadow(0 10px 24px rgba(39,232,255,.24));
 }
 .btn{
   display:inline-flex;
@@ -156,6 +164,7 @@ ul{padding-left:22px}
 }
 @media(max-width:720px){
   .nav{flex-direction:column;align-items:flex-start}
+  .nav-actions{justify-content:flex-start;width:100%}
   .grid{grid-template-columns:1fr}
   .card{padding:22px}
 }
@@ -174,7 +183,11 @@ ul{padding-left:22px}
       <img src="/assets/th3-logo.png" alt="TH3Chain">
       <span>TH3Chain</span>
     </a>
-    <a class="btn" href="/listing.html">Listing Info</a>
+    <div class="nav-actions">
+      <a class="btn" href="/">Home</a>
+      <a class="btn" href="/listing.html">Listing</a>
+      <a class="btn" href="/privacy.html">Privacy</a>
+    </div>
   </nav>
 
   <section class="hero">
