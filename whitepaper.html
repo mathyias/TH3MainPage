@@ -3,324 +3,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#020617">
+<meta name="theme-color" content="#05090c">
 <title>TH3Chain Whitepaper</title>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/assets/th3-shell.css">
 <meta property="og:title" content="TH3Chain Whitepaper">
 <meta property="og:image" content="https://th3chain.cloud/assets/th3-logo.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="TH3Chain Whitepaper">
 <meta name="twitter:image" content="https://th3chain.cloud/assets/th3-logo.png">
-<style>
-:root{
-  --bg:#020617;
-  --panel:#17233c;
-  --panel2:#10192d;
-  --text:#f8fafc;
-  --muted:#9ca3af;
-  --cyan:#4eeaff;
-  --line:rgba(255,255,255,.12);
-}
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;
-  background:
-    radial-gradient(circle at top left,rgba(78,234,255,.15),transparent 34rem),
-    linear-gradient(135deg,#102437,#071022 55%,#050816);
-  color:var(--text);
-}
-a{color:inherit}
-.wrap{
-  width:min(980px,calc(100% - 36px));
-  margin:0 auto;
-  padding:34px 0 72px;
-}
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:18px;
-  margin-bottom:58px;
-}
-.nav-actions{
-  display:flex;
-  align-items:center;
-  justify-content:flex-end;
-  gap:10px;
-  flex-wrap:wrap;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  text-decoration:none;
-  font-weight:900;
-}
-.brand img{
-  width:54px;
-  height:54px;
-  object-fit:contain;
-  filter:drop-shadow(0 10px 24px rgba(39,232,255,.24));
-}
-.btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  min-height:42px;
-  padding:0 18px;
-  border-radius:14px;
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.06);
-  text-decoration:none;
-  font-weight:800;
-}
-.btn-main{
-  background:linear-gradient(135deg,#63f3ff,#22d3ee);
-  color:#021019;
-  border:0;
-}
-.hero{
-  text-align:center;
-  margin-bottom:42px;
-}
-.kicker{
-  color:var(--cyan);
-  font-size:13px;
-  letter-spacing:6px;
-  font-weight:900;
-  text-transform:uppercase;
-}
-h1{
-  margin:16px 0 10px;
-  font-size:clamp(46px,9vw,86px);
-  line-height:.95;
-  letter-spacing:0;
-}
-.hero p{
-  width:min(760px,100%);
-  margin:0 auto;
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.7;
-}
-.card{
-  background:linear-gradient(135deg,rgba(30,49,84,.92),rgba(25,36,66,.92));
-  border:1px solid rgba(148,163,184,.25);
-  border-radius:22px;
-  padding:28px;
-  margin:18px 0;
-  box-shadow:0 18px 54px rgba(0,0,0,.24);
-}
-h2{
-  margin:0 0 14px;
-  font-size:28px;
-}
-h3{
-  margin:20px 0 10px;
-  font-size:19px;
-}
-p,li{
-  color:#cbd5e1;
-  line-height:1.72;
-}
-ul{padding-left:22px}
-.grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-}
-.row{
-  border:1px solid var(--line);
-  background:rgba(255,255,255,.05);
-  border-radius:14px;
-  padding:14px 16px;
-}
-.row span{
-  display:block;
-  color:var(--muted);
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:1.8px;
-  font-weight:900;
-}
-.row strong{
-  display:block;
-  margin-top:6px;
-  color:var(--cyan);
-  font-size:18px;
-  overflow-wrap:anywhere;
-}
-.code{
-  font-family:ui-monospace,Consolas,monospace;
-  font-size:14px;
-}
-.footer{
-  margin-top:34px;
-  text-align:center;
-  color:var(--muted);
-  font-size:13px;
-}
-@media(max-width:720px){
-  .nav{flex-direction:column;align-items:flex-start}
-  .nav-actions{justify-content:flex-start;width:100%}
-  .grid{grid-template-columns:1fr}
-  .card{padding:22px}
-}
-@media print{
-  body{background:#fff;color:#111}
-  .card{box-shadow:none;border:1px solid #ddd;background:#fff}
-  p,li,.row span,.footer{color:#333}
-  .btn{display:none}
-}
-</style>
 </head>
 <body>
-<div class="wrap">
-  <nav class="nav">
-    <a class="brand" href="/">
-      <img src="/assets/th3-logo.png" alt="TH3Chain">
-      <span>TH3Chain</span>
-    </a>
-    <div class="nav-actions">
-      <a class="btn" href="/">Home</a>
-      <a class="btn" href="/listing.html">Listing</a>
-      <a class="btn" href="/privacy.html">Privacy</a>
-    </div>
+<main class="phone">
+  <header class="topbar">
+    <a class="top-action" href="https://github.com/TH3Chain" target="_blank" rel="noreferrer" aria-label="GitHub">+</a>
+    <h1>TH3Chain</h1>
+    <img class="brand-mark" src="/assets/th3-logo.png" alt="TH3Chain">
+  </header>
+
+  <nav class="stories" aria-label="TH3 navigation">
+    <a class="story" href="https://wallet.th3chain.cloud/"><span class="story-ring"><img src="/assets/th3-logo.png" alt=""></span><strong>Wallet</strong></a>
+    <a class="story" href="https://explorer.th3chain.cloud/"><span class="story-ring">EX</span><strong>Explorer</strong></a>
+    <a class="story" href="https://chromewebstore.google.com/" target="_blank" rel="noreferrer"><span class="story-ring">CH</span><strong>Chrome</strong></a>
+    <a class="story" href="https://coinranking.com/" target="_blank" rel="noreferrer"><span class="story-ring">CR</span><strong>Ranking</strong></a>
+    <a class="story" href="https://api.th3chain.cloud/" target="_blank" rel="noreferrer"><span class="story-ring">API</span><strong>API</strong></a>
+    <a class="story" href="https://pool.th3chain.cloud/" target="_blank" rel="noreferrer"><span class="story-ring">POW</span><strong>Mining</strong></a>
+    <a class="story" href="/whitepaper.html"><span class="story-ring">WP</span><strong>Paper</strong></a>
   </nav>
 
-  <section class="hero">
-    <div class="kicker">Whitepaper v1.0</div>
-    <h1>TH3Chain</h1>
-    <p>
-      TH3Chain is a live independent Proof-of-Work blockchain using the KAWPOW mining algorithm,
-      TH3-prefixed addresses, a browser wallet, public explorer, API and mining pool.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>1. Overview</h2>
-    <p>
-      TH3Chain is a community-launched native cryptocurrency network built around open Proof-of-Work mining.
-      The chain uses the Bitcoin UTXO model and KAWPOW mining, with public infrastructure available for
-      wallets, block exploration, API access and pool mining.
-    </p>
-    <p>
-      The project goal is to provide a simple, transparent and mineable blockchain with public tools that
-      allow users to create wallets, mine TH3, inspect blocks and transactions, and follow network activity.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>2. Network Parameters</h2>
-    <div class="grid">
-      <div class="row"><span>Name</span><strong>TH3Chain</strong></div>
-      <div class="row"><span>Ticker</span><strong>TH3</strong></div>
-      <div class="row"><span>Coin Type</span><strong>Native Coin</strong></div>
-      <div class="row"><span>Consensus</span><strong>Proof of Work</strong></div>
-      <div class="row"><span>Mining Algorithm</span><strong>KAWPOW</strong></div>
-      <div class="row"><span>Address Prefix</span><strong>TH3</strong></div>
-      <div class="row"><span>Block Reward</span><strong>2137 TH3</strong></div>
-      <div class="row"><span>Halving Interval</span><strong>2,100,000 blocks</strong></div>
-      <div class="row"><span>Max Emission</span><strong>8,975,400,000 TH3</strong></div>
-      <div class="row"><span>Genesis Hash</span><strong class="code">000003b6945e94235f0cc6e81af307a09f4b7354df86cd58b5afde06fb3c1012</strong></div>
+  <section class="feed">
+    <div class="post-head">
+      <img class="avatar" src="/assets/th3-logo.png" alt="">
+      <div><strong>Whitepaper</strong><span>network design and roadmap</span></div>
+      <div class="dots">...</div>
     </div>
-  </section>
 
-  <section class="card">
-    <h2>3. Mining</h2>
-    <p>
-      TH3Chain uses KAWPOW, a GPU-oriented Proof-of-Work algorithm. Public mining is available through the
-      official TH3 mining pool.
-    </p>
-    <div class="row">
-      <span>Stratum Endpoint</span>
-      <strong class="code">stratum+tcp://pool.th3chain.cloud:3333</strong>
+    <section class="hero">
+      <div class="hero-card">
+        <span class="badge">WHITEPAPER V1.0</span>
+        <div>
+          <h2>TH3Chain</h2>
+          <p>TH3Chain is a live independent Proof-of-Work blockchain using the KAWPOW mining algorithm, public TH3 addresses and transparent on-chain settlement.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="actions">
+      <a class="button primary" href="/listing.html">Listing Info</a>
+      <a class="button" href="https://explorer.th3chain.cloud/">Explorer</a>
     </div>
-    <p>
-      Miners use their TH3 wallet address as the username. Rewards are tracked using accepted shares and
-      automatically paid after the configured confirmation buffer and minimum payout threshold.
-    </p>
+
+    <section class="stack">
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-title"><strong>Network Parameters</strong><span>v1.0</span></div>
+          <div class="rows">
+            <div class="row"><span>Name</span><strong>TH3Chain</strong></div>
+            <div class="row"><span>Ticker</span><strong>TH3</strong></div>
+            <div class="row"><span>Coin type</span><strong>Native coin</strong></div>
+            <div class="row"><span>Consensus</span><strong>Proof of Work</strong></div>
+            <div class="row"><span>Algorithm</span><strong>KAWPOW</strong></div>
+            <div class="row"><span>Address prefix</span><strong>TH3</strong></div>
+            <div class="row"><span>Block reward</span><strong>2137 TH3</strong></div>
+            <div class="row"><span>Genesis hash</span><strong class="code">000003b6945e94235f0cc6e81af307a09f4b7354df86cd58b5afde06fb3c1012</strong></div>
+          </div>
+        </div>
+      </article>
+
+      <div class="feature-grid">
+        <article class="feature-card wide">
+          <b>01</b>
+          <div>
+            <h3>Overview</h3>
+            <p>TH3Chain is a community-launched native cryptocurrency network built around open Proof-of-Work mining, public infrastructure and simple wallet access.</p>
+          </div>
+          <div class="mini-list"><span>Independent chain</span><span>Public explorer</span><span>Open wallet</span></div>
+        </article>
+
+        <article class="feature-card">
+          <b>02</b>
+          <div>
+            <h3>Mining</h3>
+            <p>TH3Chain uses KAWPOW, a GPU-oriented Proof-of-Work algorithm. Public mining is available through the official pool.</p>
+          </div>
+          <div class="mini-list"><span>pool.th3chain.cloud:3333</span><span>KAWPOW</span></div>
+        </article>
+
+        <article class="feature-card">
+          <b>03</b>
+          <div>
+            <h3>Reward Distribution</h3>
+            <p>Block rewards are produced by miners and paid through the public network. Pool payouts are visible through the TH3Chain explorer.</p>
+          </div>
+          <div class="mini-list"><span>2137 TH3</span><span>On-chain payouts</span><span>Explorer visible</span></div>
+        </article>
+
+        <article class="feature-card">
+          <b>04</b>
+          <div>
+            <h3>Supply Model</h3>
+            <p>Supply is created by mining. Public API endpoints expose current circulating, total and max supply data for trackers and integrations.</p>
+          </div>
+          <div class="mini-list"><span>Circulating API</span><span>Total API</span><span>Max supply API</span></div>
+        </article>
+
+        <article class="feature-card">
+          <b>05</b>
+          <div>
+            <h3>Infrastructure</h3>
+            <p>The public stack includes website, wallet, explorer, mining pool, API, GitHub code, social channels and listing assets.</p>
+          </div>
+          <div class="mini-list"><span>Wallet</span><span>Explorer</span><span>Pool</span><span>API</span></div>
+        </article>
+
+        <article class="feature-card">
+          <b>06</b>
+          <div>
+            <h3>Security And Transparency</h3>
+            <p>TH3Chain is secured by Proof-of-Work mining. Transactions, blocks and addresses can be inspected publicly through explorer infrastructure.</p>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <b>07</b>
+          <div>
+            <h3>Roadmap</h3>
+            <ul>
+              <li>Keep public wallet and explorer stable.</li>
+              <li>Improve mining and API monitoring.</li>
+              <li>Submit TH3Chain to aggregators and free listing platforms.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="feature-card">
+          <b>08</b>
+          <div>
+            <h3>Official Channels</h3>
+            <p>Official channels are used for launch updates, wallet releases, explorer status and listing communication.</p>
+          </div>
+          <div class="mini-list"><span>X / Twitter</span><span>Telegram</span><span>Contact</span></div>
+        </article>
+      </div>
+
+      <article class="card">
+        <div class="card-inner">
+          <div class="card-title"><strong>Official Channels</strong><span>links</span></div>
+          <div class="rows">
+            <div class="row"><span>Website</span><a href="/">th3chain.cloud</a></div>
+            <div class="row"><span>X / Twitter</span><a href="https://x.com/TH3ChainCloud">x.com/TH3ChainCloud</a></div>
+            <div class="row"><span>Telegram</span><a href="https://t.me/TH3ChainCloud">t.me/TH3ChainCloud</a></div>
+            <div class="row"><span>Contact</span><a href="mailto:contact@th3chain.cloud">contact@th3chain.cloud</a></div>
+          </div>
+        </div>
+      </article>
+
+      <footer class="powered-footer">
+        <span>TH3Chain Whitepaper v1.0 | Published <strong>2026-06-13</strong></span>
+        <div class="footer-links">
+          <a href="/">Home</a>
+          <a href="/privacy.html">Privacy</a>
+          <a href="/listing.html">Listing</a>
+        </div>
+      </footer>
+    </section>
   </section>
 
-  <section class="card">
-    <h2>4. Reward Distribution</h2>
-    <p>
-      Pool rewards are first received by the pool wallet as block rewards. After blocks mature, the payout
-      system calculates each miner's share of the payable reward period.
-    </p>
-    <ul>
-      <li>Accepted shares are used to calculate each miner's contribution.</li>
-      <li>The pool fee is deducted from the gross block reward.</li>
-      <li>The remaining miner reward is split proportionally by accepted shares.</li>
-      <li>Payouts are sent automatically when the minimum payout threshold is reached.</li>
-    </ul>
-  </section>
+  <nav class="dock" aria-label="Mobile navigation">
+    <a href="/" aria-label="Home">⌂</a>
+    <a href="https://wallet.th3chain.cloud/" aria-label="Wallet">▣</a>
+    <a href="https://explorer.th3chain.cloud/" aria-label="Explorer">⌕</a>
+    <a href="/listing.html" aria-label="Listing">≡</a>
+    <a class="active" href="/whitepaper.html" aria-label="Whitepaper">◎</a>
+  </nav>
+</main>
 
-  <section class="card">
-    <h2>5. Supply Model</h2>
-    <p>
-      TH3 has a fixed emission model based on block rewards and halvings. The block reward starts at
-      2137 TH3 and halves every 2,100,000 blocks.
-    </p>
-    <p>
-      The approximate maximum emission is 8,975,400,000 TH3. The code-level monetary validation cap is
-      higher than the actual expected emission and acts as a safety limit, while real emission is determined
-      by block subsidy and halving rules.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>6. Infrastructure</h2>
-    <ul>
-      <li>Website: <a href="https://th3chain.cloud">https://th3chain.cloud</a></li>
-      <li>Wallet: <a href="https://wallet.th3chain.cloud">https://wallet.th3chain.cloud</a></li>
-      <li>Explorer: <a href="https://explorer.th3chain.cloud">https://explorer.th3chain.cloud</a></li>
-      <li>Mining Pool: <a href="https://pool.th3chain.cloud">https://pool.th3chain.cloud</a></li>
-      <li>API: <a href="https://api.th3chain.cloud">https://api.th3chain.cloud</a></li>
-      <li>Supply API: <a href="https://api.th3chain.cloud/api/supply">https://api.th3chain.cloud/api/supply</a></li>
-      <li>Circulating Supply: <a href="https://api.th3chain.cloud/api/supply/circulating">https://api.th3chain.cloud/api/supply/circulating</a></li>
-      <li>Total Supply: <a href="https://api.th3chain.cloud/api/supply/total">https://api.th3chain.cloud/api/supply/total</a></li>
-      <li>Max Supply: <a href="https://api.th3chain.cloud/api/supply/max">https://api.th3chain.cloud/api/supply/max</a></li>
-      <li>GitHub: <a href="https://github.com/mathyias/TH3Coin">https://github.com/mathyias/TH3Coin</a></li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <h2>7. Security And Transparency</h2>
-    <p>
-      TH3Chain is secured by Proof-of-Work mining. Transactions, blocks and addresses can be inspected
-      through the public explorer. The network is designed around open mining, public statistics and
-      transparent pool payouts.
-    </p>
-  </section>
-
-  <section class="card">
-    <h2>8. Roadmap</h2>
-    <ul>
-      <li>Stabilize and monitor the live mainnet.</li>
-      <li>Improve wallet usability and payment request flows.</li>
-      <li>Expand public documentation and API endpoints.</li>
-      <li>Grow the mining and community ecosystem.</li>
-      <li>Submit TH3Chain to aggregators and free listing platforms.</li>
-      <li>Evaluate exchange opportunities without paid listing commitments where possible.</li>
-    </ul>
-  </section>
-
-  <section class="card">
-    <h2>9. Official Channels</h2>
-    <ul>
-      <li>X / Twitter: <a href="https://x.com/TH3ChainCloud">https://x.com/TH3ChainCloud</a></li>
-      <li>Telegram: <a href="https://t.me/TH3ChainCloud">https://t.me/TH3ChainCloud</a></li>
-      <li>Contact: <a href="mailto:contact@th3chain.cloud">contact@th3chain.cloud</a></li>
-      <li>Listings: <a href="mailto:listing@th3chain.cloud">listing@th3chain.cloud</a></li>
-    </ul>
-  </section>
-
-  <div class="footer">
-    TH3Chain Whitepaper v1.0 | Published 2026-06-13
-  </div>
-</div>
+<aside class="social-rail" aria-label="Social links">
+  <a class="rail-link" href="/" aria-label="Main Page"><span>⌂</span><span class="rail-label">Main Page</span></a>
+  <a class="rail-link" href="https://x.com/TH3ChainCloud" target="_blank" rel="noreferrer" aria-label="Twitter"><span>X</span><span class="rail-label">Twitter</span></a>
+  <a class="rail-link" href="https://chromewebstore.google.com/" target="_blank" rel="noreferrer" aria-label="Chrome"><span>CH</span><span class="rail-label">Chrome</span></a>
+  <a class="rail-link" href="https://t.me/TH3ChainCloud" target="_blank" rel="noreferrer" aria-label="Telegram"><span>◎</span><span class="rail-label">Telegram</span></a>
+  <a class="rail-link" href="mailto:contact@th3chain.cloud" aria-label="Contact"><span>@</span><span class="rail-label">Contact</span></a>
+</aside>
 </body>
 </html>
