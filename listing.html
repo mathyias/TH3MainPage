@@ -56,7 +56,11 @@
           <path d="M32 17.5 21.2 28.3" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
         </svg>
       </span>
-      <strong>Ranking</strong>
+      <strong>CoinRanking</strong>
+    </a>
+    <a class="story" href="https://www.livecoinwatch.com/price/TH3Chain-TH3" target="_blank" rel="noreferrer">
+      <span class="story-ring livewatch-ring">LCW</span>
+      <strong>LiveWatch</strong>
     </a>
     <a class="story" href="https://api.th3chain.cloud/" target="_blank" rel="noreferrer">
       <span class="story-ring">API</span>
@@ -80,12 +84,29 @@
     </div>
 
     <section class="hero">
-      <div class="hero-card">
-        <span class="badge">LISTING INFORMATION</span>
-        <div>
-          <h2>TH3Chain</h2>
-          <p>Public listing information, technical details, official links and brand assets for TH3, an independent KAWPOW Proof-of-Work cryptocurrency.</p>
-        </div>
+      <div class="hero-card hero-slider" aria-label="TH3 news">
+        <a class="hero-slide hero-slide-1 is-active" href="https://wallet.th3chain.cloud">
+          <span class="badge">KAWPOW mainnet online</span>
+          <div>
+            <h2>TH3<br>Network</h2>
+            <p>Wallet, explorer, mining pool and live API in one TH3 ecosystem.</p>
+          </div>
+        </a>
+        <a class="hero-slide hero-slide-2" href="https://coinranking.com/coin/jFx1j88Fo+th3chain-th3" target="_blank" rel="noreferrer">
+          <span class="badge">CoinRanking listing live</span>
+          <div>
+            <h2>TH3<br>Listed</h2>
+            <p>TH3Chain is visible on CoinRanking with public project data and live ecosystem links.</p>
+          </div>
+        </a>
+        <a class="hero-slide hero-slide-3" href="https://www.livecoinwatch.com/price/TH3Chain-TH3" target="_blank" rel="noreferrer">
+          <span class="badge">LiveCoinWatch listing live</span>
+          <div>
+            <h2>Live<br>Watch</h2>
+            <p>TH3Chain is now listed on LiveCoinWatch with supply, markets and explorer references.</p>
+          </div>
+        </a>
+        <div class="hero-dots" aria-hidden="true"><span class="is-active"></span><span></span><span></span></div>
       </div>
     </section>
 
@@ -261,5 +282,23 @@
       <span class="rail-label">Contact</span>
     </a>
   </aside>
+<script>
+function initHeroNews(){
+  const slides = Array.from(document.querySelectorAll('.hero-slide'));
+  const dots = Array.from(document.querySelectorAll('.hero-dots span'));
+  if(!slides.length) return;
+
+  let index = 0;
+  const setActive = (next) => {
+    index = next % slides.length;
+    slides.forEach((slide, i) => slide.classList.toggle('is-active', i === index));
+    dots.forEach((dot, i) => dot.classList.toggle('is-active', i === index));
+  };
+
+  setInterval(() => setActive(index + 1), 5000);
+}
+
+initHeroNews();
+</script>
 </body>
 </html>
