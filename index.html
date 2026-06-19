@@ -603,9 +603,14 @@ a{
 
 @media (min-width:900px){
   body{
+    --desktop-pad:22px;
+    --rail-width:70px;
+    --rail-gap:24px;
+    --desktop-shell:calc(1180px + var(--rail-gap) + var(--rail-width));
+    --rail-right:max(var(--desktop-pad),calc((100vw - var(--desktop-shell)) / 2));
     display:block;
     min-height:100dvh;
-    padding:22px;
+    padding:22px 0;
     overflow-y:auto;
     background:
       radial-gradient(circle at 50% -10%, rgba(22,234,222,.16), transparent 34%),
@@ -613,10 +618,11 @@ a{
   }
 
   .phone{
-    width:min(1180px,100%);
+    width:min(1180px,calc(100vw - var(--rail-right) - var(--rail-right) - var(--rail-width) - var(--rail-gap)));
     min-height:calc(100dvh - 44px);
     height:auto;
-    margin:0 auto;
+    margin-left:auto;
+    margin-right:calc(var(--rail-right) + var(--rail-width) + var(--rail-gap));
     border-radius:34px;
     background:#05090c;
     border:1px solid rgba(255,255,255,.04);
@@ -763,10 +769,10 @@ a{
   .social-rail{
     position:fixed;
     top:50%;
-    right:max(22px,calc((100vw - 1180px) / 2 - 78px));
+    right:var(--rail-right);
     bottom:auto;
     left:auto;
-    width:70px;
+    width:var(--rail-width);
     min-height:0;
     transform:translateY(-50%);
     z-index:20;
