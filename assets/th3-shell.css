@@ -460,6 +460,11 @@ a{
   padding:0 16px 16px;
 }
 
+.feature-grid{
+  display:grid;
+  gap:10px;
+}
+
 .card,
 .feature-card{
   border:1px solid var(--line);
@@ -553,7 +558,7 @@ a{
   min-height:188px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
+  justify-content:flex-start;
   gap:14px;
   padding:14px;
 }
@@ -586,6 +591,15 @@ a{
   line-height:1.42;
 }
 
+.feature-card ul{
+  margin:8px 0 0;
+  padding-left:18px;
+  color:rgba(248,251,255,.78);
+  font-size:13px;
+  font-weight:650;
+  line-height:1.42;
+}
+
 .feature-card .mini-list{
   display:flex;
   flex-wrap:wrap;
@@ -608,7 +622,7 @@ a{
 .row{
   min-height:54px;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,165px);
+  grid-template-columns:minmax(88px,.8fr) minmax(0,1.2fr);
   align-items:center;
   gap:10px;
   padding:10px 12px;
@@ -618,8 +632,22 @@ a{
 
 .row strong{
   margin-top:0;
+  min-width:0;
+  overflow-wrap:anywhere;
   color:rgba(255,255,255,.84);
-  font-size:13px;
+  font-size:12px;
+  line-height:1.25;
+  text-align:right;
+  white-space:normal;
+}
+
+.row a{
+  min-width:0;
+  overflow-wrap:anywhere;
+  color:rgba(255,255,255,.84);
+  font-size:12px;
+  font-weight:850;
+  line-height:1.25;
   text-align:right;
 }
 
@@ -818,9 +846,24 @@ a{
     padding:0 0 28px;
   }
 
+  .feature-grid{
+    grid-column:1 / -1;
+    grid-template-columns:repeat(12,minmax(0,1fr));
+    gap:14px;
+  }
+
   .stack > .card,
-  .stack > .feature-card{
+  .stack > .feature-card,
+  .feature-grid > .feature-card{
     grid-column:span 6;
+  }
+
+  .stack > .card:not(.third):not(.two-third):not(.half){
+    grid-column:1 / -1;
+  }
+
+  .feature-grid > .feature-card.wide{
+    grid-column:1 / -1;
   }
 
   .card{
