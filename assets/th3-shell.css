@@ -1102,3 +1102,17 @@ body::before{
     color:#071013;
   }
 }
+
+/* TH3 invisible native scrollbars */
+html,
+body,
+*{
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+}
+
+*::-webkit-scrollbar{
+  width:0;
+  height:0;
+  display:none;
+}
